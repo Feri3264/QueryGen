@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Programming\\QueryGen\\src\\QueryGen\\QueryGen.Domain.csproj": {}
+    "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj": {}
   },
   "projects": {
-    "E:\\Programming\\QueryGen\\src\\QueryGen\\QueryGen.Domain.csproj": {
+    "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Programming\\QueryGen\\src\\QueryGen\\QueryGen.Domain.csproj",
+        "projectUniqueName": "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj",
         "projectName": "QueryGen.Domain",
-        "projectPath": "E:\\Programming\\QueryGen\\src\\QueryGen\\QueryGen.Domain.csproj",
+        "projectPath": "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj",
         "packagesPath": "C:\\Users\\tavak\\.nuget\\packages\\",
-        "outputPath": "E:\\Programming\\QueryGen\\src\\QueryGen\\obj\\",
+        "outputPath": "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tavak\\AppData\\Roaming\\NuGet\\NuGet.Config"

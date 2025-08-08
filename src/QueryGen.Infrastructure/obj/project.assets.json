@@ -1,11 +1,64 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "QueryGen.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "QueryGen.Contracts": "1.0.0",
+          "QueryGen.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QueryGen.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QueryGen.Application.dll": {}
+        }
+      },
+      "QueryGen.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/QueryGen.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QueryGen.Contracts.dll": {}
+        }
+      },
+      "QueryGen.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/QueryGen.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QueryGen.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "QueryGen.Application/1.0.0": {
+      "type": "project",
+      "path": "../QueryGen.Application/QueryGen.Application.csproj",
+      "msbuildProject": "../QueryGen.Application/QueryGen.Application.csproj"
+    },
+    "QueryGen.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../QueryGen.Contracts/QueryGen.Contracts.csproj",
+      "msbuildProject": "../QueryGen.Contracts/QueryGen.Contracts.csproj"
+    },
+    "QueryGen.Domain/1.0.0": {
+      "type": "project",
+      "path": "../QueryGen.Domain/QueryGen.Domain.csproj",
+      "msbuildProject": "../QueryGen.Domain/QueryGen.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "QueryGen.Application >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\tavak\\.nuget\\packages\\": {}
@@ -31,7 +84,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\Programming\\QueryGen\\src\\QueryGen.Application\\QueryGen.Application.csproj": {
+              "projectPath": "E:\\Programming\\QueryGen\\src\\QueryGen.Application\\QueryGen.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

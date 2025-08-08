@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "arsTsKTikVo=",
+  "dgSpecHash": "JgwXLrRoTbg=",
   "success": true,
-  "projectFilePath": "E:\\Programming\\QueryGen\\src\\QueryGen\\QueryGen.Domain.csproj",
+  "projectFilePath": "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
