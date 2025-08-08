@@ -16,10 +16,6 @@ public class UserModel : BaseClass
 
 
 
-    //navigation
-
-
-
     //ctor
     private UserModel(
         string _username,
