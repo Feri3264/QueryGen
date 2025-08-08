@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "f54/Ybz0Sc0=",
+  "dgSpecHash": "pwneD362WlM=",
   "success": true,
   "projectFilePath": "E:\\Programming\\QueryGen\\src\\QueryGen.Application\\QueryGen.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\tavak\\.nuget\\packages\\erroror\\2.0.1\\erroror.2.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
