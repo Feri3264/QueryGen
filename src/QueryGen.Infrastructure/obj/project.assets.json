@@ -224,7 +224,6 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "MediatR": "13.0.0",
-          "QueryGen.Contracts": "1.0.0",
           "QueryGen.Domain": "1.0.0"
         },
         "compile": {
@@ -232,16 +231,6 @@
         },
         "runtime": {
           "bin/placeholder/QueryGen.Application.dll": {}
-        }
-      },
-      "QueryGen.Contracts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/QueryGen.Contracts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QueryGen.Contracts.dll": {}
         }
       },
       "QueryGen.Domain/1.0.0": {
@@ -653,11 +642,6 @@
       "type": "project",
       "path": "../QueryGen.Application/QueryGen.Application.csproj",
       "msbuildProject": "../QueryGen.Application/QueryGen.Application.csproj"
-    },
-    "QueryGen.Contracts/1.0.0": {
-      "type": "project",
-      "path": "../QueryGen.Contracts/QueryGen.Contracts.csproj",
-      "msbuildProject": "../QueryGen.Contracts/QueryGen.Contracts.csproj"
     },
     "QueryGen.Domain/1.0.0": {
       "type": "project",

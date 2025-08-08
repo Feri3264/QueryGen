@@ -256,7 +256,6 @@
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
           "MediatR": "13.0.0",
-          "QueryGen.Contracts": "1.0.0",
           "QueryGen.Domain": "1.0.0"
         },
         "compile": {

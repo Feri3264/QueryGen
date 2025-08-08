@@ -10,9 +10,9 @@ public class UserModel : BaseClass
 
     public string Password { get; private set; }
 
-    public string RefreshToken { get; private set; }
+    public string? RefreshToken { get; private set; }
 
-    public DateTime TokenExpire { get; private set; }
+    public DateTime? TokenExpire { get; private set; }
 
 
 
@@ -20,8 +20,8 @@ public class UserModel : BaseClass
     private UserModel(
         string _username,
         string _password,
-        string _refreshToken,
-        DateTime _tokenExpire)
+        string? _refreshToken,
+        DateTime? _tokenExpire)
     {
         Id = Guid.NewGuid();
         Username = _username;
@@ -36,8 +36,8 @@ public class UserModel : BaseClass
     public static ErrorOr<UserModel> Create(
         string _username,
         string _password,
-        string _refreshToekn,
-        DateTime _tokenExpire)
+        string? _refreshToekn = null,
+        DateTime? _tokenExpire = null)
     {
         //password validation
         var validatePassword = ValidatePassword(_password);

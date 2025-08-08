@@ -219,16 +219,6 @@
           }
         }
       },
-      "QueryGen.Contracts/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/QueryGen.Contracts.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/QueryGen.Contracts.dll": {}
-        }
-      },
       "QueryGen.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -634,11 +624,6 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "QueryGen.Contracts/1.0.0": {
-      "type": "project",
-      "path": "../QueryGen.Contracts/QueryGen.Contracts.csproj",
-      "msbuildProject": "../QueryGen.Contracts/QueryGen.Contracts.csproj"
-    },
     "QueryGen.Domain/1.0.0": {
       "type": "project",
       "path": "../QueryGen.Domain/QueryGen.Domain.csproj",
@@ -648,7 +633,6 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "MediatR >= 13.0.0",
-      "QueryGen.Contracts >= 1.0.0",
       "QueryGen.Domain >= 1.0.0"
     ]
   },
@@ -677,9 +661,6 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "E:\\Programming\\QueryGen\\src\\QueryGen.Contracts\\QueryGen.Contracts.csproj": {
-              "projectPath": "E:\\Programming\\QueryGen\\src\\QueryGen.Contracts\\QueryGen.Contracts.csproj"
-            },
             "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj": {
               "projectPath": "E:\\Programming\\QueryGen\\src\\QueryGen.Domain\\QueryGen.Domain.csproj"
             }
