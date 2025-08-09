@@ -9,4 +9,6 @@ public interface ISessionServices
 {
     Task<SessionModel> CreateAsync
         (string Name, Guid UserId, string ConnectionString, JsonArray Metadata);
+
+    Task DeleteAsync(Guid Id);
 }
