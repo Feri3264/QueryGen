@@ -4,6 +4,7 @@ using MediatR;
 using QueryGen.Application.Common.DTOs.Session;
 using QueryGen.Application.Common.Mappers.Session;
 using QueryGen.Application.Common.Services;
+using QueryGen.Application.Common.Utilities;
 
 namespace QueryGen.Application.Session.Command.Create;
 
@@ -12,7 +13,7 @@ public class CreateSessionHandler
 {
     public async Task<ErrorOr<CreateSessionResult>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
     {
-        var connectionString = dbServices.BuildConnectionString(
+        var connectionString = ConnectionStringBuilder.BuildConnectionString(
             request.Server,
             request.DbName,
             request.useWinAuth,
