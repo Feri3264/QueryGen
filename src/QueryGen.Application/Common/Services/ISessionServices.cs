@@ -7,5 +7,6 @@ namespace QueryGen.Application.Common.Services;
 
 public interface ISessionServices
 {
-    Task<SessionModel> CreateAsync(string Name , Guid UserId , string ConnectionString , JsonArray Metadata);
+    Task<SessionModel> CreateAsync
+        (string Name, Guid UserId, string ConnectionString, JsonArray Metadata);
 }

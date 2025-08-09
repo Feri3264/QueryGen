@@ -2,14 +2,34 @@ using System;
 using ErrorOr;
 using MediatR;
 using QueryGen.Application.Common.DTOs.Session;
+using QueryGen.Application.Common.Mappers.Session;
+using QueryGen.Application.Common.Services;
 
 namespace QueryGen.Application.Session.Command.Create;
 
 public class CreateSessionHandler
-    () : IRequestHandler<CreateSessionCommand, ErrorOr<CreateSessionResult>>
+    (ISessionServices sessionServices, IDbServices dbServices) : IRequestHandler<CreateSessionCommand, ErrorOr<CreateSessionResult>>
 {
-    public Task<ErrorOr<CreateSessionResult>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<CreateSessionResult>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var connectionString = dbServices.BuildConnectionString(
+            request.Server,
+            request.DbName,
+            request.useWinAuth,
+            request.username,
+            request.password,
+            request.port
+        );
+
+        var metadata = dbServices.GetMetadata(connectionString);
+
+        var session = await sessionServices.CreateAsync(
+            request.SessionName,
+            request.UserId,
+            connectionString,
+            metadata
+        );
+
+        return SessionMapper.ToCreateResult(session);
     }
 }
