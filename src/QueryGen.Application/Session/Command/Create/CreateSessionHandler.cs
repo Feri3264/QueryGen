@@ -13,7 +13,7 @@ public class CreateSessionHandler
 {
     public async Task<ErrorOr<CreateSessionResult>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
     {
-        var connectionString = ConnectionStringBuilder.BuildConnectionString(
+        var connectionString = ConnectionStringUtility.Build(
             request.Server,
             request.DbName,
             request.useWinAuth,

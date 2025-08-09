@@ -2,9 +2,9 @@ using System;
 
 namespace QueryGen.Application.Common.Utilities;
 
-public static class ConnectionStringBuilder
+public static class ConnectionStringUtility
 {
-    public static string BuildConnectionString(
+    public static string Build(
         string Server,
         string DbName,
         bool useWinAuth = false,
