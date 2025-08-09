@@ -5,5 +5,7 @@ namespace QueryGen.Application.Common.Services;
 
 public interface IUserServices
 {
-    Task<UserModel> LoginAsync(string username , string password);
+    Task<UserModel> LoginAsync(string username, string password);
+
+    Task<UserModel> RegisterAsync(string username, string password);
 }

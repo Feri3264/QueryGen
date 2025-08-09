@@ -2,13 +2,18 @@ using System;
 using ErrorOr;
 using MediatR;
 using QueryGen.Application.Common.DTOs.User;
+using QueryGen.Application.Common.Mappers.User;
+using QueryGen.Application.Common.Services;
 
 namespace QueryGen.Application.User.Command.Login;
 
-public class LoginUserHandler : IRequestHandler<LoginUserCommand, ErrorOr<LoginResult>>
+public class LoginUserHandler
+    (IUserServices userServices) : IRequestHandler<LoginUserCommand, ErrorOr<LoginResult>>
 {
-    public Task<ErrorOr<LoginResult>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
+    public async Task<ErrorOr<LoginResult>> Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = await userServices.LoginAsync(request.Username, request.Password);
+
+        return UserMapper.ToLoginResult(user);
     }
 }
