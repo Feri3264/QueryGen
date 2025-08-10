@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QueryGen.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcc5190beca622c66c1dd5009773354a70c24d18")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+944131d954611be3d5faf7057aefdc9f0c45a390")]
 [assembly: System.Reflection.AssemblyProductAttribute("QueryGen.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QueryGen.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
