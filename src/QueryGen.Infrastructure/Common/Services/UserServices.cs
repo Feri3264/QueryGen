@@ -13,6 +13,11 @@ public class UserServices(
     IPasswordServices passwordServices,
     IAuthServices authServices) : IUserServices
 {
+    public async Task<bool> IsUserExists(Guid Id)
+    {
+        return await userRepository.IsUserExists(Id);
+    }
+
     public async Task<ErrorOr<UserModel>> LoginAsync(string username, string password)
     {
         var user = await userRepository.FindByUsername(username);
