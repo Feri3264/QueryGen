@@ -8,6 +8,8 @@ namespace QueryGen.Application.Common.Services;
 public interface ISessionServices
 {
     Task<SessionModel> GetById(Guid Id);
+
+    Task<List<SessionModel>> GetUserSessions(Guid UserId);
     
     Task<SessionModel> CreateAsync
         (string Name, Guid UserId, string ConnectionString, JsonArray Metadata);
