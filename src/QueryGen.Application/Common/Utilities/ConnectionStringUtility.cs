@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Data.SqlClient;
+
 
 namespace QueryGen.Application.Common.Utilities;
 
@@ -12,6 +14,25 @@ public static class ConnectionStringUtility
         string password = null,
         int? port = null)
     {
-        return "";
+        var builder = new SqlConnectionStringBuilder
+        {
+            DataSource = port.HasValue ? $"{Server},{port}" : Server,
+            InitialCatalog = DbName
+        };
+
+        if (useWinAuth)
+        {
+            builder.IntegratedSecurity = true;
+        }
+        else
+        {
+            builder.UserID = username;
+            builder.Password = password;
+        }
+
+        builder.TrustServerCertificate = true;
+        builder.ConnectTimeout = 30;
+
+        return builder.ToString();
     }
 }
