@@ -1,9 +1,10 @@
 using System;
 using System.Text.Json.Nodes;
+using ErrorOr;
 
 namespace QueryGen.Application.Common.Services;
 
 public interface ILlmServices
 {
-    Task<string> GetCompletionAsync(string prompt , JsonArray Metadata);
+    Task<ErrorOr<string>> GetCompletionAsync(string Prompt);
 }
