@@ -5,7 +5,7 @@ namespace QueryGen.Application.Common.Repository;
 
 public interface ISessionRepository
 {
-    Task<SessionModel> GetById(Guid Id);
+    Task<SessionModel?> GetById(Guid Id);
 
     Task<List<SessionModel>> GetUserSessions(Guid UserId);
 
