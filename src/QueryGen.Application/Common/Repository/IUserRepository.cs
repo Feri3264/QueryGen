@@ -5,7 +5,7 @@ namespace QueryGen.Application.Common.Repository;
 
 public interface IUserRepository
 {
-    Task<UserModel> FindByUsername(string Username);
+    Task<UserModel?> FindByUsername(string Username);
 
     Task<bool> IsUsernameExists(string Username);
 

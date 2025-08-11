@@ -1,8 +1,36 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using QueryGen.Application.Common.Repository;
+using QueryGen.Domain.User;
+using QueryGen.Infrastructure.Common.Context;
 
 namespace QueryGen.Infrastructure.User;
 
 public class UserRepository
+    (QueryGenDbContext db) : IUserRepository
 {
+    public async Task AddAsync(UserModel model)
+    {
+        await db.AddAsync(model);
+    }
 
+    public async Task<UserModel?> FindByUsername(string Username)
+    {
+        return await db.Users.FindAsync(Username);
+    }
+
+    public async Task<bool> IsUserExists(Guid Id)
+    {
+        return await db.Users.AnyAsync(u => u.Id == Id);
+    }
+
+    public async Task<bool> IsUsernameExists(string Username)
+    {
+        return await db.Users.AnyAsync(u => u.Username == Username);
+    }
+
+    public async Task SaveAsync()
+    {
+        await db.SaveChangesAsync();
+    }
 }
