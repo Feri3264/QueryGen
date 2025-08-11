@@ -5,11 +5,9 @@ namespace QueryGen.Application.Common.Auth;
 
 public interface IAuthServices
 {
-    Task<string> GenerateAccessTokenAsync(UserModel user);
+    string GenerateAccessTokenAsync(UserModel user);
 
-    Task<bool> ValidateAccessTokenAsync(string token);
+    string GenerateRefreshTokenAsync();
 
-    Task<string> GenerateRefreshTokenAsync();
-
-    Task<bool> ValidateRefreshToken(UserModel user);
+    bool ValidateRefreshToken(UserModel user);
 }

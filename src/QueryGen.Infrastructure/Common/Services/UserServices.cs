@@ -28,7 +28,7 @@ public class UserServices(
         if (user.Password != passwordServices.HashPassword(password))
             return UserError.UsernameOrPasswordNotCorrect;
 
-        var newRefreshToken = await authServices.GenerateRefreshTokenAsync();
+        var newRefreshToken = authServices.GenerateRefreshTokenAsync();
 
         user.SetRefreshToken(newRefreshToken);
         user.SetTokenExpireTime(DateTime.Now.AddDays(3));
@@ -41,7 +41,7 @@ public class UserServices(
         var user = UserModel.Create(
             username,
             passwordServices.HashPassword(password),
-            await authServices.GenerateRefreshTokenAsync(),
+            authServices.GenerateRefreshTokenAsync(),
             DateTime.Now.AddDays(3)
         );
 
