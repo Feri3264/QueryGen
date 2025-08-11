@@ -11,7 +11,7 @@ public class SessionModel : BaseClass
 
     public string ConnectionString { get; set; }
 
-    public JsonArray Metadata { get; set; }
+    public string Metadata { get; set; }
 
 
     //navigation
@@ -22,7 +22,7 @@ public class SessionModel : BaseClass
     public SessionModel(
         string _name,
         string _connectionString,
-        JsonArray _metadata,
+        string _metadata,
         Guid _userId
     )
     {
@@ -38,7 +38,7 @@ public class SessionModel : BaseClass
     public static ErrorOr<SessionModel> Create(
         string _name,
         string _connectionString,
-        JsonArray _metadata,
+        string _metadata,
         Guid _userId
     )
     {

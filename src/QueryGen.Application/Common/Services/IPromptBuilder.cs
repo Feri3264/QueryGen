@@ -5,5 +5,5 @@ namespace QueryGen.Application.Common.Services;
 
 public interface IPromptBuilder
 {
-    string GeneratePrompt(string Prompt , JsonArray Metadata);
+    string GeneratePrompt(string Prompt , string Metadata);
 }

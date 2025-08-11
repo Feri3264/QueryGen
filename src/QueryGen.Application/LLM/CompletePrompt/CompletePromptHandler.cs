@@ -20,9 +20,11 @@ public class CompletePromptHandler(
 
         var llmResponse = await llmServices.GetCompletionAsync(prompt);
 
-        var query = QueryExtractor.ExtractSqlQuery(llmResponse);
+        var query = QueryExtractor.ExtractSqlQuery(llmResponse.Value);
 
-        var result = await dbServices.ExecuteQuery(query);
+        var isQueryValid = QueryValidator.IsValid(query.Value);
+
+        var result = await dbServices.ExecuteQuery(session.Value.ConnectionString , query.Value);
 
         return result;
     }

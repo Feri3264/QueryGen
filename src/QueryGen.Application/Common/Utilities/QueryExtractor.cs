@@ -1,11 +1,12 @@
 using System;
 using System.Text.RegularExpressions;
+using ErrorOr;
 
 namespace QueryGen.Application.Common.Utilities;
 
 public static class QueryExtractor
 {
-    public static string ExtractSqlQuery(string value)
+    public static ErrorOr<string> ExtractSqlQuery(string value)
     {
         var match = Regex.Match(value, @"```sql\s*(.*?)\s*```", RegexOptions.Singleline);
 
@@ -18,6 +19,7 @@ public static class QueryExtractor
         if (match.Success)
             return match.Value.Trim();
 
-        return "SQL query not found.";
+        return Error.Validation
+            (code : "query.not.found" , description : "SQL query not found.");
     }
 }
