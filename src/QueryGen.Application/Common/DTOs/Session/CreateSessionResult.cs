@@ -11,7 +11,7 @@ public class CreateSessionResult
 
     public string ConnectionString { get; set; }
 
-    public JsonArray Metadata { get; set; }
+    public string Metadata { get; set; }
 
     public Guid UserId { get; set; }
 }

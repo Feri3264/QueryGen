@@ -22,15 +22,15 @@ public class CreateSessionHandler
             request.port
         );
 
-        var metadata = dbServices.GetMetadata(connectionString);
+        var metadata = await dbServices.GetMetadata(connectionString);
 
         var session = await sessionServices.CreateAsync(
             request.SessionName,
             request.UserId,
             connectionString,
-            metadata
+            metadata.Value
         );
 
-        return SessionMapper.ToCreateResult(session);
+        return SessionMapper.ToCreateResult(session.Value);
     }
 }

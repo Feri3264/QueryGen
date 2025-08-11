@@ -12,7 +12,7 @@ public interface ISessionServices
 
     Task<ErrorOr<List<SessionModel>?>> GetUserSessions(Guid UserId);
     
-    Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, JsonArray Metadata);
+    Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata);
 
     Task<ErrorOr<Success>> DeleteAsync(Guid Id);
 }
