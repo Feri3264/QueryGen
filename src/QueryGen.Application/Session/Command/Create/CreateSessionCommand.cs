@@ -7,6 +7,7 @@ namespace QueryGen.Application.Session.Command.Create;
 public record CreateSessionCommand(
     string SessionName,
     Guid UserId,
+    string ApiToken,
     string Server,
     string DbName,
     bool useWinAuth = false,

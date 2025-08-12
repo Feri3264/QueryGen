@@ -18,7 +18,7 @@ public class CompletePromptHandler(
 
         var prompt = promptBuilder.GeneratePrompt(request.prompt , session.Value.Metadata);
 
-        var llmResponse = await llmServices.GetCompletionAsync(prompt);
+        var llmResponse = await llmServices.GetCompletionAsync(prompt , session.Value.ApiToken);
 
         var query = QueryExtractor.ExtractSqlQuery(llmResponse.Value);
 

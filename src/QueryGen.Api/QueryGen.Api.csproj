@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\QueryGen.Application\QueryGen.Application.csproj" />
     <ProjectReference Include="..\QueryGen.Contracts\QueryGen.Contracts.csproj" />
+    <ProjectReference Include="..\QueryGen.Infrastructure\QueryGen.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

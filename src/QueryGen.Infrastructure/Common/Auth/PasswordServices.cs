@@ -3,7 +3,7 @@ using QueryGen.Application.Common.Auth;
 ﻿using System.Security.Cryptography;
 using System.Text;
 
-namespace QueryGen.Infrastructure.Common.Services;
+namespace QueryGen.Infrastructure.Common.Auth;
 
 public class PasswordServices : IPasswordServices
 {

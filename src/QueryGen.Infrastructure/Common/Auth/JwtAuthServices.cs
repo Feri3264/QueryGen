@@ -8,7 +8,7 @@ using QueryGen.Application.Common.Auth;
 using QueryGen.Domain.User;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace QueryGen.Infrastructure.Common.Services;
+namespace QueryGen.Infrastructure.Common.Auth;
 
 public class JwtAuthServices
     (IConfiguration configuration) : IAuthServices

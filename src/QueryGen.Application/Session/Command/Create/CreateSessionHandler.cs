@@ -28,7 +28,8 @@ public class CreateSessionHandler
             request.SessionName,
             request.UserId,
             connectionString,
-            metadata.Value
+            metadata.Value,
+            request.ApiToken
         );
 
         return SessionMapper.ToCreateResult(session.Value);

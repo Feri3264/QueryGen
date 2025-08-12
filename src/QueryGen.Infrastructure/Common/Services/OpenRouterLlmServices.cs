@@ -9,9 +9,9 @@ namespace QueryGen.Infrastructure.Common.Services;
 
 public class OpenRouterLlmServices : ILlmServices
 {
-    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt)
+    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt , string ApiToken)
     {
-        var apiKey = "";
+        var apiKey = ApiToken;
         var apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 
 

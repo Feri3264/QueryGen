@@ -1,4 +1,4 @@
-@QueryGen.Api_HostAddress = http://localhost:5255
+@QueryGen.Api_HostAddress = http://localhost:5018
 
 GET {{QueryGen.Api_HostAddress}}/weatherforecast/
 Accept: application/json
