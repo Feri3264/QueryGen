@@ -13,5 +13,7 @@ public class CreateSessionResult
 
     public string Metadata { get; set; }
 
+    public string ApiToken { get; set; }
+
     public Guid UserId { get; set; }
 }
