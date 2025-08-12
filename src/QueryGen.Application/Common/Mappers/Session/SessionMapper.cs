@@ -1,4 +1,5 @@
 using System;
+using ErrorOr;
 using QueryGen.Application.Common.DTOs.Session;
 using QueryGen.Domain.Session;
 
@@ -16,5 +17,35 @@ public static class SessionMapper
             Metadata = model.Metadata,
             UserId = model.UserId
         };
+    }
+
+    public static GetSessionResult ToGetSessionResult(SessionModel model)
+    {
+        return new GetSessionResult
+        {
+            Name = model.Name,
+            ConnectionString = model.ConnectionString,
+            Metadata = model.Metadata,
+            UserId = model.UserId
+        };
+    }
+
+    public static List<GetMySessionsResult>? ToGetMySessionsResult(List<SessionModel>? model)
+    {
+        var sessions = new List<GetMySessionsResult>();
+
+        if (model is not null)
+        {
+            sessions = model.Select(s => new GetMySessionsResult
+            {
+                Name = s.Name,
+                ConnectionString = s.ConnectionString,
+                Metadata = s.Metadata,
+                ApiToken = s.ApiToken,
+                UserId = s.UserId
+            }).ToList();
+        }
+
+        return sessions;
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QueryGen.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9075adbf8be87f36dfe28b2840288b74fd1bafce")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abd597c2dc00fdaf155902f7fd1502910f61d1e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("QueryGen.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QueryGen.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
