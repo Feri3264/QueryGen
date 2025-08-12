@@ -14,6 +14,9 @@ public class RegisterUserHandler
     {
         var user = await userServices.RegisterAsync(request.Username, request.Password);
 
-        return UserMapper.ToRegisterResult(user);
+        if (user.IsError)
+            return user.Errors;
+
+        return UserMapper.ToRegisterResult(user.Value);
     }
 }

@@ -1,12 +1,17 @@
 using System;
+using ErrorOr;
 using QueryGen.Application.Common.Services;
 
 namespace QueryGen.Infrastructure.Common.Services;
 
 public class QueryPromptBulider : IPromptBuilder
 {
-    public string GeneratePrompt(string Prompt, string Metadata)
+    public ErrorOr<string> GeneratePrompt(string Prompt, string Metadata)
     {
+        if (String.IsNullOrEmpty(Prompt))
+            return Error.Validation
+                (code : "prompt.is.empty" , description : "Prompt Is Empty");
+
         var systemInstructions = @"
         You are an SQL generator.
         - Do NOT provide explanations.

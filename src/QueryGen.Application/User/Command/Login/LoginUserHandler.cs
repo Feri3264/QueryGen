@@ -14,6 +14,9 @@ public class LoginUserHandler
     {
         var user = await userServices.LoginAsync(request.Username, request.Password);
 
-        return UserMapper.ToLoginResult(user);
+        if (user.IsError)
+            return user.Errors;
+
+        return UserMapper.ToLoginResult(user.Value);
     }
 }

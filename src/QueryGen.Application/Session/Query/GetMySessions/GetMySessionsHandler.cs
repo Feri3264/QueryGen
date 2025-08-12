@@ -13,6 +13,9 @@ public class GetMySessionsHandler
     {
         var sessions = await sessionServices.GetUserSessions(request.UserId);
 
+        if (sessions.IsError)
+            return sessions.Errors;
+
         return sessions;
     }
 }

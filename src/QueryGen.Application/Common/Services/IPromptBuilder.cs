@@ -1,9 +1,10 @@
 using System;
+using ErrorOr;
 using System.Text.Json.Nodes;
 
 namespace QueryGen.Application.Common.Services;
 
 public interface IPromptBuilder
 {
-    string GeneratePrompt(string Prompt , string Metadata);
+    ErrorOr<string> GeneratePrompt(string Prompt , string Metadata);
 }

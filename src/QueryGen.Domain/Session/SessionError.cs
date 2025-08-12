@@ -13,6 +13,9 @@ public class SessionError
     public static Error ConnStirngIsNullOrEmpty = Error.Validation
         (code: "connString.is.nullOrEmpty", description: "ConnectionString Is Null Or Empty");
 
+    public static Error ConnStirngBuildFailed = Error.Validation
+    (code: "connString.build.failed", description: "ConnectionString Building Process Failed");
+
     public static Error ApiTokenIsNullOrEmpty = Error.Validation
     (code: "apiToken.is.nullOrEmpty", description: "Api Token Is Null Or Empty");
 }

@@ -10,7 +10,10 @@ public class DeleteSessionHandler
 {
     public async Task<ErrorOr<Success>> Handle(DeleteSessionCommand request, CancellationToken cancellationToken)
     {
-        await sessionServices.DeleteAsync(request.Id);
+        var session = await sessionServices.DeleteAsync(request.Id);
+
+        if (session.IsError)
+            return session.Errors;
 
         return Result.Success;
     }

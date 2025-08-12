@@ -13,6 +13,9 @@ public class GetSessionHandler
     {
         var session = await sessionServices.GetById(request.Id);
 
+        if (session.IsError)
+            return session.Errors;
+
         return session;
     }
 }
