@@ -11,8 +11,11 @@ public static class UserMapper
     {
         return new RegisterResult
         {
+            Id = model.Id,
             Username = model.Username,
-            Password = model.Password
+            Password = model.Password,
+            RefreshToken = model.RefreshToken,
+            TokenExpire = model.TokenExpire
         };
     }
 
