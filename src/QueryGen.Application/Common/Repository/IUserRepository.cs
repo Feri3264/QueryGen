@@ -7,11 +7,15 @@ public interface IUserRepository
 {
     Task<UserModel?> FindByUsername(string Username);
 
+    Task<UserModel> GetByRefreshToken(string token);
+
     Task<bool> IsUsernameExists(string Username);
 
     Task<bool> IsUserExists(Guid Id);
 
     Task AddAsync(UserModel model);
+
+    void Update(UserModel model);
 
     Task SaveAsync();
 }

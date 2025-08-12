@@ -2,6 +2,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using ErrorOr;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using QueryGen.Application.Common.Auth;
@@ -47,11 +48,12 @@ public class JwtAuthServices
         return Convert.ToBase64String(bytes);
     }
 
-    public bool ValidateRefreshToken(UserModel user)
+    public ErrorOr<Success> ValidateRefreshToken(UserModel user)
     {
         if (user.TokenExpire < DateTime.Now)
-            return false;
+            return Error.Validation
+                (code : "token.is.expired" , description : "Refresh Token Is Expired");
 
-        return true;
+        return Result.Success;
     }
 }

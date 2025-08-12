@@ -3,8 +3,10 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.User.Command.Login;
+using QueryGen.Application.User.Command.RefreshToken;
 using QueryGen.Application.User.Command.Register;
 using QueryGen.Contracts.DTOs.User.Login;
+using QueryGen.Contracts.DTOs.User.RefreshToken;
 using QueryGen.Contracts.DTOs.User.Register;
 
 namespace QueryGen.Api.Controllers
@@ -30,7 +32,8 @@ namespace QueryGen.Api.Controllers
                         user.Username,
                         user.Password,
                         user.RefreshToken,
-                        user.TokenExpire
+                        user.TokenExpire,
+                        user.JwtToken
                     )
                 ),
                 Problem);
@@ -54,7 +57,30 @@ namespace QueryGen.Api.Controllers
                         user.Username,
                         user.Password,
                         user.RefreshToken,
-                        user.TokenExpire
+                        user.TokenExpire,
+                        user.JwtToken
+                    )
+                ),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region RefreshToken
+
+        [HttpPost("/api/auth/refreshtoken")]
+        public async Task<IActionResult> RefreshToken(RefreshTokenRequestDto request)
+        {
+            var result = await mediator.Send(
+                new ValidateRefreshTokenCommand(request.RefreshToken)
+            );
+
+            return result.Match(
+                token => Ok(
+                    new RefreshTokenResponseDto(
+                        token.JwtToken,
+                        token.RefreshToken
                     )
                 ),
                 Problem

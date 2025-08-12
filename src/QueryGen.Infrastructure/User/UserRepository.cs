@@ -19,6 +19,11 @@ public class UserRepository
         return await db.Users.FindAsync(Username);
     }
 
+    public async Task<UserModel?> GetByRefreshToken(string token)
+    {
+        return await db.Users.FirstOrDefaultAsync(u => u.RefreshToken == token);
+    }
+
     public async Task<bool> IsUserExists(Guid Id)
     {
         return await db.Users.AnyAsync(u => u.Id == Id);
@@ -32,5 +37,10 @@ public class UserRepository
     public async Task SaveAsync()
     {
         await db.SaveChangesAsync();
+    }
+
+    public void Update(UserModel model)
+    {
+        db.Update(model);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using ErrorOr;
 using QueryGen.Domain.User;
 
 namespace QueryGen.Application.Common.Auth;
@@ -9,5 +10,5 @@ public interface IAuthServices
 
     string GenerateRefreshTokenAsync();
 
-    bool ValidateRefreshToken(UserModel user);
+    ErrorOr<Success> ValidateRefreshToken(UserModel user);
 }

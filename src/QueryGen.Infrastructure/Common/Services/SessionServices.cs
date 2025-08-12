@@ -47,12 +47,15 @@ public class SessionServices(
         return Result.Success;
     }
 
-    public async Task<ErrorOr<SessionModel>> GetById(Guid Id)
+    public async Task<ErrorOr<SessionModel>> GetById(Guid Id , Guid UserId)
     {
         var session = await sessionRepository.GetById(Id);
 
         if (session is null)
             return SessionError.SessionNotFound;
+
+        if (session.UserId != UserId)
+            return SessionError.SessionThiefError;
 
         return session;
     }

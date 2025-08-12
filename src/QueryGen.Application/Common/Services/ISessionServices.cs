@@ -8,7 +8,7 @@ namespace QueryGen.Application.Common.Services;
 
 public interface ISessionServices
 {
-    Task<ErrorOr<SessionModel>> GetById(Guid Id);
+    Task<ErrorOr<SessionModel>> GetById(Guid Id , Guid UserId);
 
     Task<ErrorOr<List<SessionModel>?>> GetUserSessions(Guid UserId);
     

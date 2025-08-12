@@ -18,4 +18,7 @@ public class SessionError
 
     public static Error ApiTokenIsNullOrEmpty = Error.Validation
     (code: "apiToken.is.nullOrEmpty", description: "Api Token Is Null Or Empty");
+
+    public static Error SessionThiefError = Error.Validation
+    (code: "you.arent.theSessionOwner", description: "It Seems You Are Not The Owner Of This Session");
 }

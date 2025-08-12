@@ -5,5 +5,6 @@ public record RegisterResponseDto(
     string Username,
     string Password,
     string RefreshToken,
-    DateTime TokenExpire
+    DateTime TokenExpire,
+    string JwtToken
 );

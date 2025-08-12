@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QueryGen.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abd597c2dc00fdaf155902f7fd1502910f61d1e9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6442fd89298df00adcd0b0d6aa135df084ed7f41")]
 [assembly: System.Reflection.AssemblyProductAttribute("QueryGen.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QueryGen.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

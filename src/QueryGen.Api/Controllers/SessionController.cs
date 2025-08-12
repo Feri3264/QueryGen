@@ -1,5 +1,6 @@
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.LLM.CompletePrompt;
 using QueryGen.Application.Session.Command.Create;
@@ -13,6 +14,7 @@ using QueryGen.Contracts.DTOs.Session.SendPrompt;
 
 namespace QueryGen.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class SessionController
         (IMediator mediator) : ApiController
@@ -55,8 +57,11 @@ namespace QueryGen.Api.Controllers
         [HttpGet("{sessionId}")]
         public async Task<IActionResult> GetSession([FromRoute] Guid sessionId)
         {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
             var result = await mediator.Send(
-                new GetSessionQuery(sessionId)
+                new GetSessionQuery(sessionId , UserId)
             );
 
             return result.Match(

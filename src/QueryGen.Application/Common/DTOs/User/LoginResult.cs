@@ -13,4 +13,6 @@ public class LoginResult
     public string RefreshToken { get; set; }
 
     public DateTime TokenExpire { get; set; }
+
+    public string JwtToken { get; set; }
 }

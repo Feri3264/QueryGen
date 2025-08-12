@@ -13,6 +13,16 @@ public class UserServices(
     IPasswordServices passwordServices,
     IAuthServices authServices) : IUserServices
 {
+    public async Task<ErrorOr<UserModel>> GetByRefreshToken(string RefreshToken)
+    {
+        var user = await userRepository.GetByRefreshToken(RefreshToken);
+
+        if (user is null)
+            return UserError.RefreshTokenNotFound;
+
+        return user;
+    }
+
     public async Task<bool> IsUserExists(Guid Id)
     {
         return await userRepository.IsUserExists(Id);
@@ -32,6 +42,9 @@ public class UserServices(
 
         user.SetRefreshToken(newRefreshToken);
         user.SetTokenExpireTime(DateTime.Now.AddDays(3));
+
+        userRepository.Update(user);
+        await userRepository.SaveAsync();
 
         return user;
     }

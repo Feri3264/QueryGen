@@ -9,7 +9,7 @@ public class UserError
             (code: "user.not.found", description: "User Not Found");
 
     public static Error UsernameAlreadyExists = Error.Validation
-        (code : "username.already.exists" , description : "Username Already Taken");
+        (code: "username.already.exists", description: "Username Already Taken");
 
     public static Error PasswordEightChar = Error.Validation
         (code: "password.8.char", description: "Password must be at least 8 characters");
@@ -22,4 +22,7 @@ public class UserError
 
     public static Error UsernameOrPasswordNotCorrect = Error.Validation
         (code: "usernameOrPassword.not.correct", description: "Username Or Password Is Not Correct");
+
+    public static Error RefreshTokenNotFound = Error.Validation
+    (code: "refreshToken.not.found", description: "User With The RefreshToken Not Found");
 }
