@@ -51,6 +51,11 @@ public class UserServices(
 
     public async Task<ErrorOr<UserModel>> RegisterAsync(string username, string password)
     {
+        var validatePassword = passwordServices.ValidatePassword(password);
+
+        if (validatePassword.IsError)
+            return validatePassword.Errors;
+            
         var user = UserModel.Create(
             username,
             passwordServices.HashPassword(password),

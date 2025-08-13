@@ -1,0 +1,12 @@
+E:\Programming\QueryGen\src\QueryGen.Domain\bin\Debug\net9.0\QueryGen.Domain.deps.json
+E:\Programming\QueryGen\src\QueryGen.Domain\bin\Debug\net9.0\QueryGen.Domain.dll
+E:\Programming\QueryGen\src\QueryGen.Domain\bin\Debug\net9.0\QueryGen.Domain.pdb
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.csproj.AssemblyReference.cache
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.AssemblyInfoInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.AssemblyInfo.cs
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.csproj.CoreCompileInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.dll
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\refint\QueryGen.Domain.dll
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\QueryGen.Domain.pdb
+E:\Programming\QueryGen\src\QueryGen.Domain\obj\Debug\net9.0\ref\QueryGen.Domain.dll

@@ -1,0 +1,15 @@
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.csproj.AssemblyReference.cache
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.AssemblyInfoInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.AssemblyInfo.cs
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.csproj.CoreCompileInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Application\bin\Debug\net9.0\QueryGen.Application.deps.json
+E:\Programming\QueryGen\src\QueryGen.Application\bin\Debug\net9.0\QueryGen.Application.dll
+E:\Programming\QueryGen\src\QueryGen.Application\bin\Debug\net9.0\QueryGen.Application.pdb
+E:\Programming\QueryGen\src\QueryGen.Application\bin\Debug\net9.0\QueryGen.Domain.dll
+E:\Programming\QueryGen\src\QueryGen.Application\bin\Debug\net9.0\QueryGen.Domain.pdb
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.5D531412.Up2Date
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.dll
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\refint\QueryGen.Application.dll
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.pdb
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\ref\QueryGen.Application.dll

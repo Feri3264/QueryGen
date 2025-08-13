@@ -14,7 +14,7 @@ public class CompletePromptHandler(
 {
     public async Task<ErrorOr<string>> Handle(CompletePromptCommand request, CancellationToken cancellationToken)
     {
-        var session = await sessionServices.GetById(request.SessionId);
+        var session = await sessionServices.GetById(request.SessionId , request.UserId);
 
         if (session.IsError)
             return session.Errors;

@@ -1,0 +1,17 @@
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.csproj.AssemblyReference.cache
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.AssemblyInfoInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.AssemblyInfo.cs
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.csproj.CoreCompileInputs.cache
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Infrastructure.deps.json
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Infrastructure.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Infrastructure.pdb
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Application.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Domain.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Application.pdb
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\bin\Debug\net9.0\QueryGen.Domain.pdb
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.F1B8AD5B.Up2Date
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\refint\QueryGen.Infrastructure.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.pdb
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\ref\QueryGen.Infrastructure.dll

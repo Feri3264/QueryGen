@@ -39,11 +39,6 @@ public class UserModel : BaseClass
         string _refreshToekn,
         DateTime _tokenExpire)
     {
-        //password validation
-        var validatePassword = ValidatePassword(_password);
-        if (validatePassword.IsError)
-            return validatePassword.Errors;
-
         //name validation
         if (string.IsNullOrWhiteSpace(_username))
             return UserError.UserNotFound;
@@ -62,38 +57,6 @@ public class UserModel : BaseClass
     {
         TokenExpire = date;
     }
-
-
-    #region Password Validation
-    private static ErrorOr<Success> ValidatePassword(string password)
-    {
-        if (password.Length <= 8)
-        {
-            return UserError.PasswordEightChar;
-        }
-
-        if (!password.Any(c => IsLetter(c)))
-        {
-            return UserError.PasswordContainLetter;
-        }
-
-        if (!password.Any(c => IsDeigit(c)))
-        {
-            return UserError.PasswordContainNumber;
-        }
-
-        return Result.Success;
-    }
-    private static bool IsLetter(char c)
-    {
-        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-    }
-
-    private static bool IsDeigit(char c)
-    {
-        return (c >= '0' && c <= '9');
-    }
-    #endregion
 
 
     private UserModel() { }

@@ -140,8 +140,11 @@ namespace QueryGen.Api.Controllers
         [HttpPost("{sessionId}/prompt")]
         public async Task<IActionResult> SendPrompt([FromRoute] Guid sessionId, [FromBody] SendPromptRequestDto request)
         {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
             var result = await mediator.Send(
-                new CompletePromptCommand(sessionId, request.prompt)
+                new CompletePromptCommand(sessionId, UserId, request.prompt)
             );
 
             return result.Match(

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using QueryGen.Application.Common.DependencyInjection;
+using QueryGen.Infrastructure.Common.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +38,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddAuthorization();
 
 
+builder.Services.AddApplicationDI();
+builder.Services.AddInfrastructureDI(configuration : builder.Configuration);
 
 
 var app = builder.Build();

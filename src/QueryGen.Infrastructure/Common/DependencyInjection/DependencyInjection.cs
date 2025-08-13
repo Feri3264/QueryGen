@@ -2,12 +2,12 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using QueryGen.Application.Common.Auth;
 using QueryGen.Application.Common.Repository;
 using QueryGen.Application.Common.Services;
 using QueryGen.Infrastructure.Common.Context;
 using QueryGen.Infrastructure.Common.Services;
+using QueryGen.Infrastructure.Common.Auth;
 using QueryGen.Infrastructure.Session;
 using QueryGen.Infrastructure.User;
 
