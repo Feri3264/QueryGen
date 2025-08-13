@@ -14,7 +14,7 @@ public class SessionServices(
 {
     public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken)
     {
-        if (await userServices.IsUserExists(UserId))
+        if (!await userServices.IsUserExists(UserId))
             return UserError.UserNotFound;
 
         var session = SessionModel.Create(

@@ -8,18 +8,25 @@ public static class QueryExtractor
 {
     public static ErrorOr<string> ExtractSqlQuery(string value)
     {
-        var match = Regex.Match(value, @"```sql\s*(.*?)\s*```", RegexOptions.Singleline);
+        var match = Regex.Match(
+            value,
+            @"```sql\s*(.*?)\s*```|(SELECT|INSERT|UPDATE|DELETE)[\s\S]*?(?=\s*$)",
+            RegexOptions.IgnoreCase | RegexOptions.Singleline
+        );
 
         if (match.Success)
-            return match.Groups[1].Value.Trim();
+        {
+            // اگر حالت markdown باشه
+            if (match.Groups[1].Success && !string.IsNullOrWhiteSpace(match.Groups[1].Value))
+                return match.Groups[1].Value.Trim();
 
-
-        match = Regex.Match(value, @"(SELECT|INSERT|UPDATE|DELETE)[\s\S]+?;", RegexOptions.IgnoreCase);
-
-        if (match.Success)
+            // حالت کوئری مستقیم
             return match.Value.Trim();
+        }
 
-        return Error.Validation
-            (code : "query.not.found" , description : "SQL query not found.");
+        return Error.Validation(
+            code: "query.not.found",
+            description: "SQL query not found."
+        );
     }
 }

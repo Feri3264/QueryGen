@@ -15,7 +15,8 @@ public static class SessionMapper
             Name = model.Name,
             ConnectionString = model.ConnectionString,
             Metadata = model.Metadata,
-            UserId = model.UserId
+            UserId = model.UserId,
+            ApiToken = model.ApiToken
         };
     }
 
@@ -26,7 +27,8 @@ public static class SessionMapper
             Name = model.Name,
             ConnectionString = model.ConnectionString,
             Metadata = model.Metadata,
-            UserId = model.UserId
+            UserId = model.UserId,
+            ApiToken = model.ApiToken
         };
     }
 

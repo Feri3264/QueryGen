@@ -16,7 +16,7 @@ public class UserRepository
 
     public async Task<UserModel?> FindByUsername(string Username)
     {
-        return await db.Users.FindAsync(Username);
+        return await db.Users.FirstOrDefaultAsync(u => u.Username == Username);
     }
 
     public async Task<UserModel?> GetByRefreshToken(string token)

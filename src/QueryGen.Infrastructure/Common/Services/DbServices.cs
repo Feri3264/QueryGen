@@ -4,6 +4,7 @@ using System.Text.Json;
 using ErrorOr;
 using Microsoft.Data.SqlClient;
 using QueryGen.Application.Common.Services;
+using Newtonsoft.Json;
 
 namespace QueryGen.Infrastructure.Common.Services;
 
@@ -24,10 +25,7 @@ public class DbServices : IDbServices
         using var reader = await command.ExecuteReaderAsync();
         dataTable.Load(reader);
 
-        var result = JsonSerializer.Serialize(dataTable, new JsonSerializerOptions
-        {
-            WriteIndented = true
-        });
+        string result = JsonConvert.SerializeObject(dataTable, Formatting.Indented);
 
         return result;
     }
@@ -69,10 +67,7 @@ public class DbServices : IDbServices
         }
 
         // JSON خروجی فشرده
-        var json = JsonSerializer.Serialize(metadata, new JsonSerializerOptions
-        {
-            WriteIndented = false
-        });
+        string json = JsonConvert.SerializeObject(metadata, Formatting.Indented);
 
         return json;
     }

@@ -12,12 +12,11 @@ public static class QueryValidator
 
     private static readonly string[] ForbiddenKeywords =
     {
-        "INSERT", "UPDATE", "DELETE", "DROP", "ALTER", "TRUNCATE", "EXEC", "MERGE",
-        "--", ";", "/*", "*/", "@@", "XP_", "SP_"
+        "INSERT", "UPDATE", "DELETE", "DROP", "ALTER", "TRUNCATE", "EXEC", "MERGE"
     };
 
 
-    private static readonly Regex SelectRegex = new(@"^SELECT\s+.+\s+FROM\s+\w+", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+    // private static readonly Regex SelectRegex = new(@"^SELECT\s+.+\s+FROM\s+\w+", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
 
     public static ErrorOr<Success> IsValid(string query)
@@ -46,11 +45,11 @@ public static class QueryValidator
         }
 
 
-        if (!SelectRegex.IsMatch(query))
-        {
-            return Error.Validation
-                (code : "syntax.not.valid" , description : "Query syntax is invalid or not a simple SELECT.");
-        }
+        // if (!SelectRegex.IsMatch(query))
+        // {
+        //     return Error.Validation
+        //         (code : "syntax.not.valid" , description : "Query syntax is invalid or not a simple SELECT.");
+        // }
 
         return Result.Success;
     }
