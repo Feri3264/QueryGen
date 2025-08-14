@@ -33,6 +33,7 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 - [.NET 9 SDK](https://dotnet.microsoft.com/download)
 - SQL Server
 - A valid API key from [OpenRouter](https://openrouter.ai/docs/api-reference/authentication)
+- You can also import [PostmanQueryGen](PostmanQueryGen) file in your Postman.
 
 ### Steps
 ```bash
@@ -51,7 +52,6 @@ dotnet ef database update --project src/QueryGen.Infrastructure --startup-projec
 # 4. Run the API
 dotnet run --project src/QueryGen.Api
 ```
-- You can also use [PostmanQueryGen](PostmanQueryGen) file in your Postman.
 ---
 
 ## 5. Usage
