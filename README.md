@@ -80,6 +80,7 @@ Authorization: Bearer {accessToken}
 {
   "sessionName": "Test DB",
   "apiToken": "LLM_API_KEY",
+  "llmModel": "LLMModel",
   "server": "localhost",
   "dbName": "ShopDB",
   "useWinAuth": false,
@@ -115,7 +116,7 @@ Authorization: Bearer {accessToken}
 |--------|----------|-------------|------|
 | **GET** | `/api/sessions` | Get all sessions for the current user | - |
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
-| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
+| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |
 | **POST** | `/api/session/{sessionId}/prompt` | Send a natural language request to the LLM for a specific session | `{ "prompt": "string" }` |
 

@@ -24,7 +24,7 @@ public class CompletePromptHandler(
         if (prompt.IsError)
             return prompt.Errors;
 
-        var llmResponse = await llmServices.GetCompletionAsync(prompt.Value , session.Value.ApiToken);
+        var llmResponse = await llmServices.GetCompletionAsync(prompt.Value , session.Value.ApiToken , session.Value.LlmModel);
 
         if (llmResponse.IsError)
             return llmResponse.Errors;

@@ -15,6 +15,8 @@ public class SessionModel : BaseClass
 
     public string ApiToken { get; set; }
 
+    public string LlmModel { get; set; }
+
 
     //navigation
     public Guid UserId { get; set; }
@@ -26,7 +28,8 @@ public class SessionModel : BaseClass
         string _connectionString,
         string _metadata,
         Guid _userId,
-        string _apiToken
+        string _apiToken,
+        string _llmModel
     )
     {
         Id = Guid.NewGuid();
@@ -35,6 +38,7 @@ public class SessionModel : BaseClass
         Metadata = _metadata;
         UserId = _userId;
         ApiToken = _apiToken;
+        LlmModel = _llmModel;
     }
 
 
@@ -44,7 +48,8 @@ public class SessionModel : BaseClass
         string _connectionString,
         string _metadata,
         Guid _userId,
-        string _apiToken
+        string _apiToken,
+        string _llmModel
     )
     {
         if (string.IsNullOrWhiteSpace(_name))
@@ -56,7 +61,7 @@ public class SessionModel : BaseClass
         if (string.IsNullOrWhiteSpace(_apiToken))
             return SessionError.ApiTokenIsNullOrEmpty;
 
-        return new SessionModel(_name, _connectionString, _metadata, _userId , _apiToken);
+        return new SessionModel(_name, _connectionString, _metadata, _userId , _apiToken , _llmModel);
     }
 
 

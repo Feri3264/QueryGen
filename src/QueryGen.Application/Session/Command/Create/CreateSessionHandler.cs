@@ -32,7 +32,8 @@ public class CreateSessionHandler
             request.UserId,
             connectionString.Value,
             metadata.Value,
-            request.ApiToken
+            request.ApiToken,
+            request.LlmModel
         );
 
         if (session.IsError)

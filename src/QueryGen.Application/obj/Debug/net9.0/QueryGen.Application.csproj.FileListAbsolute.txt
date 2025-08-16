@@ -13,3 +13,4 @@ E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Appli
 E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\refint\QueryGen.Application.dll
 E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.pdb
 E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\ref\QueryGen.Application.dll
+E:\Programming\QueryGen\src\QueryGen.Application\obj\Debug\net9.0\QueryGen.Application.sourcelink.json

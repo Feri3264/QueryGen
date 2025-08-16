@@ -15,5 +15,7 @@ public class CreateSessionResult
 
     public string ApiToken { get; set; }
 
+    public string LlmModel { get; set; }
+
     public Guid UserId { get; set; }
 }

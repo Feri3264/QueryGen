@@ -16,7 +16,8 @@ public static class SessionMapper
             ConnectionString = model.ConnectionString,
             Metadata = model.Metadata,
             UserId = model.UserId,
-            ApiToken = model.ApiToken
+            ApiToken = model.ApiToken,
+            LlmModel = model.LlmModel
         };
     }
 
@@ -28,7 +29,8 @@ public static class SessionMapper
             ConnectionString = model.ConnectionString,
             Metadata = model.Metadata,
             UserId = model.UserId,
-            ApiToken = model.ApiToken
+            ApiToken = model.ApiToken,
+            LlmModel = model.LlmModel
         };
     }
 
@@ -44,6 +46,7 @@ public static class SessionMapper
                 ConnectionString = s.ConnectionString,
                 Metadata = s.Metadata,
                 ApiToken = s.ApiToken,
+                LlmModel = s.LlmModel,
                 UserId = s.UserId
             }).ToList();
         }

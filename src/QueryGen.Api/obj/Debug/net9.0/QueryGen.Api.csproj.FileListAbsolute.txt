@@ -185,3 +185,4 @@ E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\QueryGen.Api.pdb
 E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\QueryGen.Api.genruntimeconfig.cache
 E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\ref\QueryGen.Api.dll
 E:\Programming\QueryGen\src\QueryGen.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\QueryGen.Api.sourcelink.json

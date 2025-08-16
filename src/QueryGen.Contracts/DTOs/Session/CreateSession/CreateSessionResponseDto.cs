@@ -5,5 +5,6 @@ public record CreateSessionResponseDto(
     string ConnectionString,
     string Metadata,
     string ApiToken,
+    string LlmModel,
     Guid UserId
 );

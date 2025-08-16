@@ -9,3 +9,4 @@ E:\Programming\QueryGen\src\QueryGen.Contracts\obj\Debug\net9.0\QueryGen.Contrac
 E:\Programming\QueryGen\src\QueryGen.Contracts\obj\Debug\net9.0\refint\QueryGen.Contracts.dll
 E:\Programming\QueryGen\src\QueryGen.Contracts\obj\Debug\net9.0\QueryGen.Contracts.pdb
 E:\Programming\QueryGen\src\QueryGen.Contracts\obj\Debug\net9.0\ref\QueryGen.Contracts.dll
+E:\Programming\QueryGen\src\QueryGen.Contracts\obj\Debug\net9.0\QueryGen.Contracts.sourcelink.json

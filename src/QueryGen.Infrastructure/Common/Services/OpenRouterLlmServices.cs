@@ -9,7 +9,7 @@ namespace QueryGen.Infrastructure.Common.Services;
 
 public class OpenRouterLlmServices : ILlmServices
 {
-    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt , string ApiToken)
+    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt , string ApiToken , string LlmModel)
     {
         var apiKey = ApiToken;
         var apiUrl = "https://openrouter.ai/api/v1/chat/completions";
@@ -24,7 +24,7 @@ public class OpenRouterLlmServices : ILlmServices
 
         var requestBody = new
         {
-            model = "z-ai/glm-4.5-air:free",
+            model = LlmModel,
             messages = new[]
             {
                 new { role = "user", content = Prompt }

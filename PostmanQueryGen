@@ -19,7 +19,13 @@
 									"name": "/api/sessions",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "",
+												"type": "text"
+											}
+										],
 										"url": {
 											"raw": "{{baseUrl}}/api/sessions",
 											"host": [
@@ -70,11 +76,16 @@
 											{
 												"key": "Content-Type",
 												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzBlMjljMi0wODllLTRmZGEtODgxYy1lYjY0OTAyOTY0NzUiLCJuYW1lIjoiZmFyaWRib3l5eSIsImV4cCI6MTc1NTM2OTM4OCwiaXNzIjoiUXVlcnlHZW4iLCJhdWQiOiJjbGllbnQifQ.ZJlAVIy7pJ31gGdr-YBKoRMED4D9AjKJBQBby0gBpFE",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"useWinAuth\": false,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 3105\n}",
+											"raw": "{\n  \"sessionName\": \"\",\n  \"apiToken\": \"\",\n  \"llmModel\": \"\",\n  \"server\": \"\",\n  \"dbName\": \"\",\n  \"useWinAuth\": false\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -143,7 +154,13 @@
 									"name": "/api/Session/:sessionId",
 									"request": {
 										"method": "GET",
-										"header": [],
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "",
+												"type": "text"
+											}
+										],
 										"url": {
 											"raw": "{{baseUrl}}/api/Session/:sessionId",
 											"host": [
@@ -157,7 +174,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "5ea28a87-775e-6f98-ff80-059257375784",
+													"value": "",
 													"description": "(Required) "
 												}
 											]
@@ -218,7 +235,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "5ea28a87-775e-6f98-ff80-059257375784",
+													"value": "",
 													"description": "(Required) "
 												}
 											]
@@ -269,11 +286,16 @@
 											{
 												"key": "Content-Type",
 												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "",
+												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"prompt\": \"string\"\n}",
+											"raw": "{\n  \"prompt\": \"\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -295,7 +317,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "5ea28a87-775e-6f98-ff80-059257375784",
+													"value": "",
 													"description": "(Required) "
 												}
 											]
@@ -371,7 +393,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+											"raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -450,7 +472,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+											"raw": "{\n  \"username\": \"\",\n  \"password\": \"\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",

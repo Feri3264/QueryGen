@@ -12,7 +12,7 @@ public class SessionServices(
     ISessionRepository sessionRepository,
     IUserServices userServices) : ISessionServices
 {
-    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken)
+    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken , string LlmModel)
     {
         if (!await userServices.IsUserExists(UserId))
             return UserError.UserNotFound;
@@ -22,7 +22,8 @@ public class SessionServices(
             ConnectionString,
             Metadata,
             UserId,
-            ApiToken
+            ApiToken,
+            LlmModel
         );
 
         if (session.IsError)

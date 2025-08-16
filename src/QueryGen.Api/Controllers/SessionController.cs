@@ -40,6 +40,7 @@ namespace QueryGen.Api.Controllers
                     s.ConnectionString,
                     s.Metadata,
                     s.ApiToken,
+                    s.LlmModel,
                     s.UserId
                 )).ToList();
             }
@@ -71,6 +72,7 @@ namespace QueryGen.Api.Controllers
                         session.ConnectionString,
                         session.Metadata,
                         session.ApiToken,
+                        session.LlmModel,
                         session.UserId
                     )
                 ),
@@ -93,6 +95,7 @@ namespace QueryGen.Api.Controllers
                     request.SessionName,
                     UserId,
                     request.ApiToken,
+                    request.LlmModel,
                     request.Server,
                     request.DbName,
                     request.useWinAuth,
@@ -109,6 +112,7 @@ namespace QueryGen.Api.Controllers
                         session.ConnectionString,
                         session.Metadata,
                         session.ApiToken,
+                        session.LlmModel,
                         session.UserId
                     )
                 ),

@@ -8,6 +8,7 @@ public record CreateSessionCommand(
     string SessionName,
     Guid UserId,
     string ApiToken,
+    string LlmModel,
     string Server,
     string DbName,
     bool useWinAuth = false,

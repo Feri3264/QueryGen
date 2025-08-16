@@ -15,3 +15,4 @@ E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.In
 E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\refint\QueryGen.Infrastructure.dll
 E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.pdb
 E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\ref\QueryGen.Infrastructure.dll
+E:\Programming\QueryGen\src\QueryGen.Infrastructure\obj\Debug\net9.0\QueryGen.Infrastructure.sourcelink.json
