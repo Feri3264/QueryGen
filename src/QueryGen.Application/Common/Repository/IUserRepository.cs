@@ -5,9 +5,11 @@ namespace QueryGen.Application.Common.Repository;
 
 public interface IUserRepository
 {
+    Task<UserModel?> GetById(Guid Id);
+
     Task<UserModel?> FindByUsername(string Username);
 
-    Task<UserModel> GetByRefreshToken(string token);
+    Task<UserModel?> GetByRefreshToken(string token);
 
     Task<bool> IsUsernameExists(string Username);
 

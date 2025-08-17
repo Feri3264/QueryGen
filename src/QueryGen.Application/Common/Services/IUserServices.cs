@@ -13,4 +13,6 @@ public interface IUserServices
     Task<ErrorOr<UserModel>> RegisterAsync(string username, string password);
 
     Task<ErrorOr<UserModel>> GetByRefreshToken(string RefreshToken);
+
+    Task<ErrorOr<UserModel>> ChangePassword(Guid userId , string oldPassword , string newPassword);
 }

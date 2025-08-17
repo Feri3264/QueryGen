@@ -79,7 +79,7 @@
 											},
 											{
 												"key": "Authorization",
-												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNzBlMjljMi0wODllLTRmZGEtODgxYy1lYjY0OTAyOTY0NzUiLCJuYW1lIjoiZmFyaWRib3l5eSIsImV4cCI6MTc1NTM2OTM4OCwiaXNzIjoiUXVlcnlHZW4iLCJhdWQiOiJjbGllbnQifQ.ZJlAVIy7pJ31gGdr-YBKoRMED4D9AjKJBQBby0gBpFE",
+												"value": "",
 												"type": "text"
 											}
 										],
@@ -533,6 +533,39 @@
 											"body": ""
 										}
 									]
+								}
+							]
+						},
+						{
+							"name": "ChangePassword",
+							"item": [
+								{
+									"name": "ChangePassword",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"newPassword\": \"\",\r\n  \"oldPassword\": \"\"\r\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/User",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"User"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}

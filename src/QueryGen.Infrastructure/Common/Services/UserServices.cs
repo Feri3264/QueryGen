@@ -13,6 +13,29 @@ public class UserServices(
     IPasswordServices passwordServices,
     IAuthServices authServices) : IUserServices
 {
+    public async Task<ErrorOr<UserModel>> ChangePassword(Guid userId, string oldPassword, string newPassword)
+    {
+        var user = await userRepository.GetById(userId);
+
+        if (user is null)
+            return UserError.UserNotFound;
+
+        if (user.Password != passwordServices.HashPassword(oldPassword))
+            return UserError.PasswordNotCorrect;
+
+        var validatePassword = passwordServices.ValidatePassword(newPassword);
+
+        if (validatePassword.IsError)
+            return validatePassword.Errors;
+
+        user.SetPassword(passwordServices.HashPassword(newPassword));
+
+        userRepository.Update(user);
+        await userRepository.SaveAsync();
+
+        return user;
+    }
+
     public async Task<ErrorOr<UserModel>> GetByRefreshToken(string RefreshToken)
     {
         var user = await userRepository.GetByRefreshToken(RefreshToken);

@@ -23,6 +23,9 @@ public class UserError
     public static Error UsernameOrPasswordNotCorrect = Error.Validation
         (code: "usernameOrPassword.not.correct", description: "Username Or Password Is Not Correct");
 
+    public static Error PasswordNotCorrect = Error.Validation
+        (code: "Password.not.correct", description: "Password Is Incorrect");
+
     public static Error RefreshTokenNotFound = Error.Validation
-    (code: "refreshToken.not.found", description: "User With The RefreshToken Not Found");
+        (code: "refreshToken.not.found", description: "User With The RefreshToken Not Found");
 }

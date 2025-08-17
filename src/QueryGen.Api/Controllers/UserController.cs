@@ -1,10 +1,13 @@
+using System.Security.Cryptography;
 using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QueryGen.Application.User.Command.ChangePassword;
 using QueryGen.Application.User.Command.Login;
 using QueryGen.Application.User.Command.RefreshToken;
 using QueryGen.Application.User.Command.Register;
+using QueryGen.Contracts.DTOs.User.ChangePassword;
 using QueryGen.Contracts.DTOs.User.Login;
 using QueryGen.Contracts.DTOs.User.RefreshToken;
 using QueryGen.Contracts.DTOs.User.Register;
@@ -59,6 +62,34 @@ namespace QueryGen.Api.Controllers
                         user.RefreshToken,
                         user.TokenExpire,
                         user.JwtToken
+                    )
+                ),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region ChangePassword
+
+        [HttpPatch]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequestDto request)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new ChangePasswordCommand(UserId, request.newPassword, request.oldPassword)
+            );
+
+            return result.Match(
+                user => Ok(
+                    new ChangePasswordResponseDto(
+                        user.Id,
+                        user.Username,
+                        user.Password,
+                        user.RefreshToken,
+                        user.TokenExpire
                     )
                 ),
                 Problem

@@ -109,6 +109,7 @@ Authorization: Bearer {accessToken}
 |--------|----------|-------------|------|
 | **POST** | `/api/user/register` | Register a new user | `{ "username": "string", "password": "string" }` |
 | **POST** | `/api/user/login` | Login and get JWT & refresh token | `{ "username": "string", "password": "string" }` |
+| **PATCH** | `/api/user` | Change User Password | `{ "newPassword": "string", "oldPassword": "string" }` |
 | **POST** | `/api/auth/refreshtoken` | Refresh JWT using refresh token | `{ "refreshToken": "string" }` |
 
 ### Session API

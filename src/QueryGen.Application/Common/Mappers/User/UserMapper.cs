@@ -33,12 +33,24 @@ public static class UserMapper
         };
     }
 
-    public static RefreshTokenResult ToRefreshTokenResult(string JwtToken , string RefreshToken)
+    public static RefreshTokenResult ToRefreshTokenResult(string JwtToken, string RefreshToken)
     {
         return new RefreshTokenResult
         {
             JwtToken = JwtToken,
             RefreshToken = RefreshToken
+        };
+    }
+
+    public static ChangePasswordResult ToChangePasswordResult(UserModel model)
+    {
+        return new ChangePasswordResult
+        {
+            Id = model.Id,
+            Username = model.Username,
+            Password = model.Password,
+            RefreshToken = model.RefreshToken,
+            TokenExpire = model.TokenExpire,
         };
     }
 }

@@ -19,6 +19,11 @@ public class UserRepository
         return await db.Users.FirstOrDefaultAsync(u => u.Username == Username);
     }
 
+    public async Task<UserModel?> GetById(Guid Id)
+    {
+        return await db.Users.FirstOrDefaultAsync(u => u.Id == Id);
+    }
+
     public async Task<UserModel?> GetByRefreshToken(string token)
     {
         return await db.Users.FirstOrDefaultAsync(u => u.RefreshToken == token);

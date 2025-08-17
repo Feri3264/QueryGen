@@ -58,6 +58,11 @@ public class UserModel : BaseClass
         TokenExpire = date;
     }
 
+    public void SetPassword(string value)
+    {
+        Password = value;    
+    }
+
 
     private UserModel() { }
 }
