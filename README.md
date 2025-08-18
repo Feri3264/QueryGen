@@ -33,6 +33,7 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 - [.NET 9 SDK](https://dotnet.microsoft.com/download)
 - SQL Server
 - A valid API key from [OpenRouter](https://openrouter.ai/docs/api-reference/authentication)
+- An OpenRouter [LLM Model](https://openrouter.ai/models)
 - You can also import [PostmanQueryGen](PostmanQueryGen) file in your Postman.
 
 ### Steps
@@ -119,6 +120,7 @@ Authorization: Bearer {accessToken}
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
 | **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
 | **PATCH** | `/api/session/{sessionId}/name` | Change Session Name | `{ "name": "..." }` |
+| **PATCH** | `/api/session/{sessionId}/llmmodel` | Change Session LLM Model | `{ "model": "..." }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |
 | **POST** | `/api/session/{sessionId}/prompt` | Send a natural language request to the LLM for a specific session | `{ "prompt": "string" }` |
 

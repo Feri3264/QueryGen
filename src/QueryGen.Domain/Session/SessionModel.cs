@@ -69,5 +69,10 @@ public class SessionModel : BaseClass
         Name = value;
     }
 
+    public void SetModel(string value)
+    {
+        LlmModel = value;
+    }
+
     private SessionModel() { }
 }

@@ -3,11 +3,13 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.LLM.CompletePrompt;
+using QueryGen.Application.Session.Command.ChangeLlmModel;
 using QueryGen.Application.Session.Command.ChangeName;
 using QueryGen.Application.Session.Command.Create;
 using QueryGen.Application.Session.Command.Delete;
 using QueryGen.Application.Session.Query.GetMySessions;
 using QueryGen.Application.Session.Query.GetSession;
+using QueryGen.Contracts.DTOs.Session.ChangeLlmModel;
 using QueryGen.Contracts.DTOs.Session.ChangeName;
 using QueryGen.Contracts.DTOs.Session.CreateSession;
 using QueryGen.Contracts.DTOs.Session.GetMySessions;
@@ -156,6 +158,35 @@ namespace QueryGen.Api.Controllers
             return result.Match(
                 session => Ok(
                     new ChangeNameResponseDto(
+                        session.Name,
+                        session.ConnectionString,
+                        session.Metadata,
+                        session.ApiToken,
+                        session.LlmModel,
+                        session.UserId
+                    )
+                ),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region ChangeLlmModel
+
+        [HttpPatch("{sessionId}/llmmodel")]
+        public async Task<IActionResult> ChangeModel([FromRoute] Guid sessionId, ChangeLlmModelRequestDto request)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new ChangeLlmModelCommand(sessionId, request.model, UserId)
+            );
+
+            return result.Match(
+                session => Ok(
+                    new ChangeLlmModelResponseDto(
                         session.Name,
                         session.ConnectionString,
                         session.Metadata,

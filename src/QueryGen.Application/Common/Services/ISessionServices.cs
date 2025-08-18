@@ -16,5 +16,7 @@ public interface ISessionServices
 
     Task<ErrorOr<Success>> DeleteAsync(Guid Id);
 
-    Task<ErrorOr<SessionModel>> ChangeName(Guid SessionId , string Name , Guid UserId);
+    Task<ErrorOr<SessionModel>> ChangeName(Guid SessionId, string Name, Guid UserId);
+    
+    Task<ErrorOr<SessionModel>> ChangeModel(Guid SessionId , string Model , Guid UserId);
 }

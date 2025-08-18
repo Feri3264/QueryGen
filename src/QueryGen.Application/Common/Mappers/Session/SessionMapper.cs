@@ -66,4 +66,17 @@ public static class SessionMapper
             UserId = model.UserId
         };
     }
+
+    public static ChangeModelResult ToChangeModelResult(SessionModel model)
+    {
+        return new ChangeModelResult
+        {
+            Name = model.Name,
+            ConnectionString = model.ConnectionString,
+            Metadata = model.Metadata,
+            ApiToken = model.ApiToken,
+            LlmModel = model.LlmModel,
+            UserId = model.UserId
+        };
+    }
 }
