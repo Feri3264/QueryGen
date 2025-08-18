@@ -7,19 +7,19 @@ namespace QueryGen.Domain.Session;
 
 public class SessionModel : BaseClass
 {
-    public string Name { get; set; }
+    public string Name { get; private set; }
 
-    public string ConnectionString { get; set; }
+    public string ConnectionString { get; private set; }
 
-    public string Metadata { get; set; }
+    public string Metadata { get; private set; }
 
-    public string ApiToken { get; set; }
+    public string ApiToken { get; private set; }
 
-    public string LlmModel { get; set; }
+    public string LlmModel { get; private set; }
 
 
     //navigation
-    public Guid UserId { get; set; }
+    public Guid UserId { get; private set; }
 
 
 
@@ -64,7 +64,10 @@ public class SessionModel : BaseClass
         return new SessionModel(_name, _connectionString, _metadata, _userId , _apiToken , _llmModel);
     }
 
-
+    public void SetName(string value)
+    {
+        Name = value;
+    }
 
     private SessionModel() { }
 }

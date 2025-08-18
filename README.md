@@ -118,6 +118,7 @@ Authorization: Bearer {accessToken}
 | **GET** | `/api/sessions` | Get all sessions for the current user | - |
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
 | **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
+| **PATCH** | `/api/session/{sessionId}/name` | Change Session Name | `{ "name": "..." }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |
 | **POST** | `/api/session/{sessionId}/prompt` | Send a natural language request to the LLM for a specific session | `{ "prompt": "string" }` |
 

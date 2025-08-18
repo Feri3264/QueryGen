@@ -12,6 +12,24 @@ public class SessionServices(
     ISessionRepository sessionRepository,
     IUserServices userServices) : ISessionServices
 {
+    public async Task<ErrorOr<SessionModel>> ChangeName(Guid SessionId, string Name, Guid UserId)
+    {
+        var session = await sessionRepository.GetById(SessionId);
+
+        if (session is null)
+            return SessionError.SessionNotFound;
+
+        if (UserId != session.UserId)
+            return SessionError.SessionThiefError;
+
+        session.SetName(Name);
+
+        sessionRepository.Update(session);
+        await sessionRepository.SaveAsync();
+
+        return session;
+    }
+
     public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken , string LlmModel)
     {
         if (!await userServices.IsUserExists(UserId))

@@ -3,10 +3,12 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.LLM.CompletePrompt;
+using QueryGen.Application.Session.Command.ChangeName;
 using QueryGen.Application.Session.Command.Create;
 using QueryGen.Application.Session.Command.Delete;
 using QueryGen.Application.Session.Query.GetMySessions;
 using QueryGen.Application.Session.Query.GetSession;
+using QueryGen.Contracts.DTOs.Session.ChangeName;
 using QueryGen.Contracts.DTOs.Session.CreateSession;
 using QueryGen.Contracts.DTOs.Session.GetMySessions;
 using QueryGen.Contracts.DTOs.Session.GetSession;
@@ -133,6 +135,35 @@ namespace QueryGen.Api.Controllers
 
             return result.Match(
                 _ => Ok(),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region ChangeName
+
+        [HttpPatch("{sessionId}/name")]
+        public async Task<IActionResult> ChangeName([FromRoute] Guid sessionId, ChangeNameRequestDto request)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new ChangeNameCommand(sessionId, request.Name, UserId)
+            );
+
+            return result.Match(
+                session => Ok(
+                    new ChangeNameResponseDto(
+                        session.Name,
+                        session.ConnectionString,
+                        session.Metadata,
+                        session.ApiToken,
+                        session.LlmModel,
+                        session.UserId
+                    )
+                ),
                 Problem
             );
         }

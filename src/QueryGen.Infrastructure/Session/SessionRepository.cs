@@ -38,4 +38,9 @@ public class SessionRepository
     {
         await db.SaveChangesAsync();
     }
+
+    public void Update(SessionModel model)
+    {
+        db.Sessions.Update(model);
+    }
 }

@@ -53,4 +53,17 @@ public static class SessionMapper
 
         return sessions;
     }
+
+    public static ChangeNameResult ToChangeNameResult(SessionModel model)
+    {
+        return new ChangeNameResult
+        {
+            Name = model.Name,
+            ConnectionString = model.ConnectionString,
+            Metadata = model.Metadata,
+            ApiToken = model.ApiToken,
+            LlmModel = model.LlmModel,
+            UserId = model.UserId
+        };
+    }
 }
