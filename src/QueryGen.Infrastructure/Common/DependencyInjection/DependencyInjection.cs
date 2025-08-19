@@ -10,6 +10,7 @@ using QueryGen.Infrastructure.Common.Services;
 using QueryGen.Infrastructure.Common.Auth;
 using QueryGen.Infrastructure.Session;
 using QueryGen.Infrastructure.User;
+using QueryGen.Infrastructure.SessionHistory;
 
 namespace QueryGen.Infrastructure.Common.DependencyInjection;
 
@@ -41,6 +42,7 @@ public static class DependencyInjection
         //repository
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
+        services.AddScoped<ISessionHistoryRepository, SessionHistoryRepository>();
 
 
         return services;

@@ -568,6 +568,137 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "SessionHistory",
+							"item": [
+								{
+									"name": "GetSessionHistories",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Session/:sessionId/history",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Session",
+												":sessionId",
+												"history"
+											],
+											"variable": [
+												{
+													"key": "sessionId",
+													"value": "urn:uuid:73f011d7-fd54-5ec0-eb92-1f4cee384b44",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Session/:sessionId/history",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Session",
+														":sessionId",
+														"history"
+													],
+													"variable": [
+														{
+															"key": "sessionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "GetHistory",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Session/:sessionId/history/:historyId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Session",
+												":sessionId",
+												"history",
+												":historyId"
+											],
+											"variable": [
+												{
+													"key": "sessionId",
+													"value": "urn:uuid:73f011d7-fd54-5ec0-eb92-1f4cee384b44",
+													"description": "(Required) "
+												},
+												{
+													"key": "historyId",
+													"value": "urn:uuid:73f011d7-fd54-5ec0-eb92-1f4cee384b44",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Session/:sessionId/history/:historyId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Session",
+														":sessionId",
+														"history",
+														":historyId"
+													],
+													"variable": [
+														{
+															"key": "sessionId"
+														},
+														{
+															"key": "historyId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
 						}
 					]
 				},

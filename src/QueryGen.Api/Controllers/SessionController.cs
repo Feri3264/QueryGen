@@ -7,13 +7,17 @@ using QueryGen.Application.Session.Command.ChangeLlmModel;
 using QueryGen.Application.Session.Command.ChangeName;
 using QueryGen.Application.Session.Command.Create;
 using QueryGen.Application.Session.Command.Delete;
+using QueryGen.Application.Session.Query.GetHistory;
 using QueryGen.Application.Session.Query.GetMySessions;
 using QueryGen.Application.Session.Query.GetSession;
+using QueryGen.Application.Session.Query.GetSessionHistories;
 using QueryGen.Contracts.DTOs.Session.ChangeLlmModel;
 using QueryGen.Contracts.DTOs.Session.ChangeName;
 using QueryGen.Contracts.DTOs.Session.CreateSession;
+using QueryGen.Contracts.DTOs.Session.GetHistory;
 using QueryGen.Contracts.DTOs.Session.GetMySessions;
 using QueryGen.Contracts.DTOs.Session.GetSession;
+using QueryGen.Contracts.DTOs.Session.GetSessionHistories;
 using QueryGen.Contracts.DTOs.Session.SendPrompt;
 
 namespace QueryGen.Api.Controllers
@@ -195,6 +199,69 @@ namespace QueryGen.Api.Controllers
                         session.UserId
                     )
                 ),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region GetHistory
+
+        [HttpGet("{sessionId}/history/{historyId}")]
+        public async Task<IActionResult> GetHistory([FromRoute] Guid sessionId, [FromRoute] Guid historyId)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new GetHistoryQuery(sessionId, UserId, historyId)
+            );
+
+            return result.Match(
+                history => Ok(
+                    new GetHistoryResponseDto(
+                        history.Id,
+                        history.Prompt,
+                        history.Query,
+                        history.Result,
+                        history.CreatedAt,
+                        history.SessionId
+                    )
+                ),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region GetSessionHistories
+
+        [HttpGet("{sessionId}/history")]
+        public async Task<IActionResult> GetSessionHistories([FromRoute] Guid sessionId)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new GetSessionHistoriesQuery(sessionId, UserId)
+            );
+
+            var histories = new List<GetSessionHistoriesResponseDto>();
+
+            if (result.Value is not null)
+            {
+                histories = result.Value.Select(h => new GetSessionHistoriesResponseDto(
+                    h.Id,
+                    h.Prompt,
+                    h.Query,
+                    h.Result,
+                    h.CreatedAt,
+                    h.SessionId
+                )).ToList();
+            }
+
+            return result.Match(
+                _ => Ok(histories),
                 Problem
             );
         }

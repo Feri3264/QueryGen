@@ -44,6 +44,11 @@ public class CompletePromptHandler(
         if (result.IsError)
             return result.Errors;
 
+        var history = await sessionServices.CreateHistoryAsync(session.Value.Id , request.prompt , query.Value , result.Value);
+
+        if (history.IsError)
+            return history.Errors;
+
         return result.Value;
     }
 }

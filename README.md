@@ -118,6 +118,8 @@ Authorization: Bearer {accessToken}
 |--------|----------|-------------|------|
 | **GET** | `/api/sessions` | Get all sessions for the current user | - |
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
+| **GET** | `/api/session/{sessionId}/history/{historyId}` | Get a conversation history details | - |
+| **GET** | `/api/session/{sessionId}/history` | Get conversations history for a session | - |
 | **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
 | **PATCH** | `/api/session/{sessionId}/name` | Change Session Name | `{ "name": "..." }` |
 | **PATCH** | `/api/session/{sessionId}/llmmodel` | Change Session LLM Model | `{ "model": "..." }` |
@@ -128,7 +130,7 @@ Authorization: Bearer {accessToken}
 
 ## 7. Future Plans
 - Add a Web UI
-- Save prompt & response history
+- Save prompt & response history (Done)
 - Support multiple LLMs with selectable options per session
 - Support more databases (PostgreSQL, MySQL, etc.)
 

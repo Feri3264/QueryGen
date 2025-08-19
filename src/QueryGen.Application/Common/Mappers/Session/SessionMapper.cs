@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.CompilerServices;
 using ErrorOr;
 using QueryGen.Application.Common.DTOs.Session;
 using QueryGen.Domain.Session;
+using QueryGen.Domain.SessionHistory;
 
 namespace QueryGen.Application.Common.Mappers.Session;
 
@@ -78,5 +80,38 @@ public static class SessionMapper
             LlmModel = model.LlmModel,
             UserId = model.UserId
         };
+    }
+
+    public static GetHistoryResult ToGetHistoryResult(SessionHistoryModel model)
+    {
+        return new GetHistoryResult
+        {
+            Id = model.Id,
+            Prompt = model.Prompt,
+            Query = model.Query,
+            Result = model.Result,
+            CreatedAt = model.CreatedAt,
+            SessionId = model.SessionId
+        };
+    }
+
+    public static List<GetSessionHistoriesResult>? ToGetHistories(List<SessionHistoryModel>? model)
+    {
+        var histories = new List<GetSessionHistoriesResult>();
+
+        if (model is not null)
+        {
+            histories = model.Select(h => new GetSessionHistoriesResult
+            {
+                Id = h.Id,
+                Prompt = h.Prompt,
+                Query = h.Query,
+                Result = h.Result,
+                CreatedAt = h.CreatedAt,
+                SessionId = h.SessionId
+            }).ToList();
+        }
+
+        return histories;
     }
 }

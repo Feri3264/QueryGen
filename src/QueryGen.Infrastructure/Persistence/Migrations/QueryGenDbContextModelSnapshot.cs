@@ -58,6 +58,36 @@ namespace QueryGen.Infrastructure.Persistence.Migrations
                     b.ToTable("Sessions");
                 });
 
+            modelBuilder.Entity("QueryGen.Domain.SessionHistory.SessionHistoryModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Prompt")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Query")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Result")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SessionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SessionId");
+
+                    b.ToTable("SessionsHistories");
+                });
+
             modelBuilder.Entity("QueryGen.Domain.User.UserModel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -90,6 +120,15 @@ namespace QueryGen.Infrastructure.Persistence.Migrations
                     b.HasOne("QueryGen.Domain.User.UserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("QueryGen.Domain.SessionHistory.SessionHistoryModel", b =>
+                {
+                    b.HasOne("QueryGen.Domain.Session.SessionModel", null)
+                        .WithMany()
+                        .HasForeignKey("SessionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
