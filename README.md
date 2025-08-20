@@ -15,6 +15,7 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 - **Clean Architecture + CQRS** → Highly maintainable and testable.
 - **Switchable LLM Providers** → Currently using an external API but can switch to local models.
 - **Regex-based Query Extraction & Validation** → Ensures query correctness.
+- **Preview Query** → Before executing on the actual database, QueryGen allows users to preview the generated SQL query, ensuring full control and safety.
 
 ---
 
@@ -125,6 +126,7 @@ Authorization: Bearer {accessToken}
 | **PATCH** | `/api/session/{sessionId}/llmmodel` | Change Session LLM Model | `{ "model": "..." }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |
 | **POST** | `/api/session/{sessionId}/prompt` | Send a natural language request to the LLM for a specific session | `{ "prompt": "string" }` |
+| **POST** | `/api/session/{sessionId}/preview` | Get a preview of the query before executing on your database | `{ "prompt": "string" }` |
 
 ---
 

@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.LLM.CompletePrompt;
+using QueryGen.Application.LLM.QueryPreview;
 using QueryGen.Application.Session.Command.ChangeLlmModel;
 using QueryGen.Application.Session.Command.ChangeName;
 using QueryGen.Application.Session.Command.Create;
@@ -18,6 +19,7 @@ using QueryGen.Contracts.DTOs.Session.GetHistory;
 using QueryGen.Contracts.DTOs.Session.GetMySessions;
 using QueryGen.Contracts.DTOs.Session.GetSession;
 using QueryGen.Contracts.DTOs.Session.GetSessionHistories;
+using QueryGen.Contracts.DTOs.Session.PreviewQuery;
 using QueryGen.Contracts.DTOs.Session.SendPrompt;
 
 namespace QueryGen.Api.Controllers
@@ -70,7 +72,7 @@ namespace QueryGen.Api.Controllers
                 return Unauthorized();
 
             var result = await mediator.Send(
-                new GetSessionQuery(sessionId , UserId)
+                new GetSessionQuery(sessionId, UserId)
             );
 
             return result.Match(
@@ -282,6 +284,26 @@ namespace QueryGen.Api.Controllers
 
             return result.Match(
                 response => Ok(response),
+                Problem
+            );
+        }
+
+        #endregion
+
+        #region QueryPreview
+
+        [HttpPost("{sessionId}/preview")]
+        public async Task<IActionResult> PreviewQuery([FromRoute] Guid sessionId, PreviewQueryRequestDto request)
+        {
+            if (!TryGetUserId(out Guid UserId))
+                return Unauthorized();
+
+            var result = await mediator.Send(
+                new QueryPreviewCommand(sessionId, UserId, request.prompt)
+            );
+
+            return result.Match(
+                query => Ok(query),
                 Problem
             );
         }

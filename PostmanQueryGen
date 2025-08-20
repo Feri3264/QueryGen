@@ -699,6 +699,99 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "PreviewQuery",
+							"item": [
+								{
+									"name": "PreviewQuery",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"prompt\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Session/:sessionId/preview",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Session",
+												":sessionId",
+												"preview"
+											],
+											"variable": [
+												{
+													"key": "sessionId",
+													"value": "5029c977-3176-17d2-2927-ac045f9db32e",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"prompt\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/Session/:sessionId/preview",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Session",
+														":sessionId",
+														"preview"
+													],
+													"variable": [
+														{
+															"key": "sessionId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
 						}
 					]
 				},

@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using ErrorOr;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using QueryGen.Application.User.Command.ChangePassword;
@@ -71,7 +72,7 @@ namespace QueryGen.Api.Controllers
         #endregion
 
         #region ChangePassword
-
+        [Authorize]
         [HttpPatch]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequestDto request)
         {
