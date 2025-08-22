@@ -42,7 +42,7 @@ public class OpenRouterLlmServices : ILlmServices
 
         if (!response.IsSuccessStatusCode)
             return Error.NotFound
-                (code : response.StatusCode.ToString() , description : "LLM Didn't Make A Response");
+                (code : response.StatusCode.ToString() , description : $"LLM Error : {response.ReasonPhrase}");
 
 
         using var doc = JsonDocument.Parse(responseContent);

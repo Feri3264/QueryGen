@@ -27,6 +27,7 @@ public class DbServices : IDbServices
         await connection.OpenAsync();
 
         using var command = connection.CreateCommand();
+        command.CommandText = query;
 
         var dataTable = new DataTable();
         using var reader = await command.ExecuteReaderAsync();
