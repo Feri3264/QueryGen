@@ -3,29 +3,25 @@ using ErrorOr;
 using Microsoft.Data.SqlClient;
 using QueryGen.Domain.Session;
 
+namespace QueryGen.Application.Common.Utilities.ConnectionString;
 
-namespace QueryGen.Application.Common.Utilities;
-
-public static class ConnectionStringUtility
+public class SqlServerConnectionBuilder : IConnectionStringBuilder
 {
-    public static ErrorOr<string> Build(
+    public ErrorOr<string> Build(
         string Server,
         string DbName,
-        bool useWinAuth = false,
-        string username = null,
-        string password = null,
-        int? port = null)
+        string? username = null,
+        string? password = null,
+        int? port = null
+    )
     {
-        if (String.IsNullOrEmpty(Server) || String.IsNullOrEmpty(DbName))
-            return SessionError.ConnStirngBuildFailed;
-
         var builder = new SqlConnectionStringBuilder
         {
             DataSource = port.HasValue ? $"{Server},{port}" : Server,
             InitialCatalog = DbName
         };
 
-        if (useWinAuth)
+        if (username is null && password is null)
         {
             builder.IntegratedSecurity = true;
         }

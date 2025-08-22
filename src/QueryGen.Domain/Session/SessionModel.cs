@@ -2,6 +2,7 @@ using System;
 using System.Text.Json.Nodes;
 using ErrorOr;
 using QueryGen.Domain.Common;
+using QueryGen.Domain.Common.Enums;
 
 namespace QueryGen.Domain.Session;
 
@@ -17,6 +18,8 @@ public class SessionModel : BaseClass
 
     public string LlmModel { get; private set; }
 
+    public DatabaseTypeEnum DbType { get; set; }
+
 
     //navigation
     public Guid UserId { get; private set; }
@@ -29,7 +32,8 @@ public class SessionModel : BaseClass
         string _metadata,
         Guid _userId,
         string _apiToken,
-        string _llmModel
+        string _llmModel,
+        DatabaseTypeEnum _dbType
     )
     {
         Id = Guid.NewGuid();
@@ -39,6 +43,7 @@ public class SessionModel : BaseClass
         UserId = _userId;
         ApiToken = _apiToken;
         LlmModel = _llmModel;
+        DbType = _dbType;
     }
 
 
@@ -49,7 +54,8 @@ public class SessionModel : BaseClass
         string _metadata,
         Guid _userId,
         string _apiToken,
-        string _llmModel
+        string _llmModel,
+        DatabaseTypeEnum _dbType
     )
     {
         if (string.IsNullOrWhiteSpace(_name))
@@ -61,7 +67,7 @@ public class SessionModel : BaseClass
         if (string.IsNullOrWhiteSpace(_apiToken))
             return SessionError.ApiTokenIsNullOrEmpty;
 
-        return new SessionModel(_name, _connectionString, _metadata, _userId , _apiToken , _llmModel);
+        return new SessionModel(_name, _connectionString, _metadata, _userId, _apiToken, _llmModel , _dbType);
     }
 
     public void SetName(string value)

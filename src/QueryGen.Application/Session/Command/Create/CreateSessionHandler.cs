@@ -5,6 +5,7 @@ using QueryGen.Application.Common.DTOs.Session;
 using QueryGen.Application.Common.Mappers.Session;
 using QueryGen.Application.Common.Services;
 using QueryGen.Application.Common.Utilities;
+using QueryGen.Application.Common.Utilities.ConnectionString;
 
 namespace QueryGen.Application.Session.Command.Create;
 
@@ -13,19 +14,23 @@ public class CreateSessionHandler
 {
     public async Task<ErrorOr<CreateSessionResult>> Handle(CreateSessionCommand request, CancellationToken cancellationToken)
     {
-        var connectionString = ConnectionStringUtility.Build(
+        var builder = ConnectionStringBuilderFactory.Create(request.DbType);
+
+        if (builder.IsError)
+            return builder.Errors;
+
+        var connectionString = builder.Value.Build(
             request.Server,
             request.DbName,
-            request.useWinAuth,
             request.username,
             request.password,
             request.port
         );
 
-        if (connectionString.IsError)
-            return connectionString.Errors;
+        var metadata = await dbServices.GetMetadata(connectionString.Value , request.DbType);
 
-        var metadata = await dbServices.GetMetadata(connectionString.Value);
+        if (metadata.IsError)
+            return metadata.Errors;
 
         var session = await sessionServices.CreateAsync(
             request.SessionName,
@@ -33,7 +38,8 @@ public class CreateSessionHandler
             connectionString.Value,
             metadata.Value,
             request.ApiToken,
-            request.LlmModel
+            request.LlmModel,
+            request.DbType
         );
 
         if (session.IsError)

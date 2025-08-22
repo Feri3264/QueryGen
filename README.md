@@ -85,7 +85,7 @@ Authorization: Bearer {accessToken}
   "llmModel": "LLMModel",
   "server": "localhost",
   "dbName": "ShopDB",
-  "useWinAuth": false,
+  "dbType": "sqlserver"
   "username": "sa",
   "password": "1234",
   "port": 1433
@@ -121,7 +121,7 @@ Authorization: Bearer {accessToken}
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
 | **GET** | `/api/session/{sessionId}/history/{historyId}` | Get a conversation history details | - |
 | **GET** | `/api/session/{sessionId}/history` | Get conversations history for a session | - |
-| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "useWinAuth": true/false, "username": "...", "password": "...", "port": number }` |
+| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "dbType": "...", "username": "...", "password": "...", "port": number }` |
 | **PATCH** | `/api/session/{sessionId}/name` | Change Session Name | `{ "name": "..." }` |
 | **PATCH** | `/api/session/{sessionId}/llmmodel` | Change Session LLM Model | `{ "model": "..." }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |

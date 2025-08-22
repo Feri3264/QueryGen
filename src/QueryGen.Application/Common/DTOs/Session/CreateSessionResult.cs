@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Nodes;
+using QueryGen.Domain.Common.Enums;
 
 namespace QueryGen.Application.Common.DTOs.Session;
 
@@ -16,6 +17,8 @@ public class CreateSessionResult
     public string ApiToken { get; set; }
 
     public string LlmModel { get; set; }
+
+    public DatabaseTypeEnum DbType { get; set; }
 
     public Guid UserId { get; set; }
 }

@@ -1,6 +1,7 @@
 using MediatR;
 using ErrorOr;
 using QueryGen.Application.Common.DTOs.Session;
+using QueryGen.Domain.Common.Enums;
 
 namespace QueryGen.Application.Session.Command.Create;
 
@@ -9,9 +10,9 @@ public record CreateSessionCommand(
     Guid UserId,
     string ApiToken,
     string LlmModel,
+    DatabaseTypeEnum DbType,
     string Server,
     string DbName,
-    bool useWinAuth = false,
     string username = null,
     string password = null,
     int? port = null) : IRequest<ErrorOr<CreateSessionResult>>;

@@ -5,21 +5,28 @@ using ErrorOr;
 using Microsoft.Data.SqlClient;
 using QueryGen.Application.Common.Services;
 using Newtonsoft.Json;
+using System.Data.Common;
+using Npgsql;
+using QueryGen.Domain.Common.Enums;
+using QueryGen.Application.Common.Utilities;
+using System.Threading.Tasks;
 
 namespace QueryGen.Infrastructure.Common.Services;
 
 public class DbServices : IDbServices
 {
-    public async Task<ErrorOr<string>> ExecuteQuery(string connectionString, string query)
+    public async Task<ErrorOr<string>> ExecuteQuery(string connectionString, DatabaseTypeEnum dbType, string query)
     {
-        var testConnection = TestConnection(connectionString);
+        var testConnection = await TestConnection(connectionString, dbType);
 
         if (testConnection.IsError)
             return testConnection.Errors;
 
-        using var connection = new SqlConnection(connectionString);
-        using var command = new SqlCommand(query, connection);
+        using var connection = DbConnectionFactory.CreateConnection(dbType, connectionString);
+
         await connection.OpenAsync();
+
+        using var command = connection.CreateCommand();
 
         var dataTable = new DataTable();
         using var reader = await command.ExecuteReaderAsync();
@@ -27,20 +34,23 @@ public class DbServices : IDbServices
 
         string result = JsonConvert.SerializeObject(dataTable, Formatting.Indented);
 
+        connection.Close();
+
         return result;
     }
 
 
-    public async Task<ErrorOr<string>> GetMetadata(string ConnectionString)
+    public async Task<ErrorOr<string>> GetMetadata(string ConnectionString, DatabaseTypeEnum dbType)
     {
-        var testConnection = TestConnection(ConnectionString);
+        var testConnection = await TestConnection(ConnectionString, dbType);
 
         if (testConnection.IsError)
             return testConnection.Errors;
 
- 
-        using var connection = new SqlConnection(ConnectionString);
-        connection.Open();
+        using var connection = DbConnectionFactory.CreateConnection(dbType, ConnectionString);
+
+        await connection.OpenAsync();
+
 
         var metadata = new Dictionary<string, List<Dictionary<string, string>>>();
 
@@ -66,7 +76,7 @@ public class DbServices : IDbServices
             metadata[tableName] = columnList;
         }
 
-        // JSON خروجی فشرده
+
         string json = JsonConvert.SerializeObject(metadata, Formatting.Indented);
 
         return json;
@@ -75,37 +85,18 @@ public class DbServices : IDbServices
 
 
     //Utilities
-    private ErrorOr<bool> TestConnection(string connectionString)
+    private async Task<ErrorOr<bool>> TestConnection(string connectionString, DatabaseTypeEnum dbType)
     {
         try
         {
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                return connection.State == ConnectionState.Open;
-            }
+            using var connection = DbConnectionFactory.CreateConnection(dbType, connectionString);
+            await connection.OpenAsync();
+            return connection.State == ConnectionState.Open;
         }
         catch (Exception ex)
         {
-            return Error.Validation
-                (code: ex.Message, description: "Couldn't Connect To Database.");
+            return Error.Validation(
+                code: "db.connection.failed", description: $"Couldn't connect to database: {ex.Message}");
         }
-    }
-
-    private List<Dictionary<string, object>> DataTableToList(DataTable table)
-    {
-        var list = new List<Dictionary<string, object>>();
-
-        foreach (DataRow row in table.Rows)
-        {
-            var dict = new Dictionary<string, object>();
-            foreach (DataColumn col in table.Columns)
-            {
-                dict[col.ColumnName] = row[col];
-            }
-            list.Add(dict);
-        }
-
-        return list;
     }
 }

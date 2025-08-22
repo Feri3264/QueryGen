@@ -35,6 +35,10 @@ namespace QueryGen.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("DbType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("LlmModel")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

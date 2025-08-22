@@ -19,13 +19,7 @@
 									"name": "/api/sessions",
 									"request": {
 										"method": "GET",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "",
-												"type": "text"
-											}
-										],
+										"header": [],
 										"url": {
 											"raw": "{{baseUrl}}/api/sessions",
 											"host": [
@@ -76,16 +70,11 @@
 											{
 												"key": "Content-Type",
 												"value": "application/json"
-											},
-											{
-												"key": "Authorization",
-												"value": "",
-												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"sessionName\": \"\",\n  \"apiToken\": \"\",\n  \"llmModel\": \"\",\n  \"server\": \"\",\n  \"dbName\": \"\",\n  \"useWinAuth\": false\n}",
+											"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 9813\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -117,7 +106,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"useWinAuth\": false,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 3105\n}",
+													"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"useWinAuth\": false,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 9813\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -154,13 +143,7 @@
 									"name": "/api/Session/:sessionId",
 									"request": {
 										"method": "GET",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "",
-												"type": "text"
-											}
-										],
+										"header": [],
 										"url": {
 											"raw": "{{baseUrl}}/api/Session/:sessionId",
 											"host": [
@@ -174,7 +157,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "",
+													"value": "urn:uuid:44de2be3-f622-5794-7a28-a9aa0da4c85d",
 													"description": "(Required) "
 												}
 											]
@@ -235,7 +218,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "",
+													"value": "urn:uuid:44de2be3-f622-5794-7a28-a9aa0da4c85d",
 													"description": "(Required) "
 												}
 											]
@@ -377,23 +360,18 @@
 							"name": "ChangeName",
 							"item": [
 								{
-									"name": "ChangeName",
+									"name": "/api/Session/:sessionId/name",
 									"request": {
 										"method": "PATCH",
 										"header": [
 											{
 												"key": "Content-Type",
 												"value": "application/json"
-											},
-											{
-												"key": "Authorization",
-												"value": "",
-												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"name\": \"\"\n}",
+											"raw": "{\n  \"name\": \"string\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -415,7 +393,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "",
+													"value": "urn:uuid:44de2be3-f622-5794-7a28-a9aa0da4c85d",
 													"description": "(Required) "
 												}
 											]
@@ -434,7 +412,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"name\": \"\"\n}",
+													"raw": "{\n  \"name\": \"string\"\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",
@@ -475,23 +453,18 @@
 							"name": "ChangeModel",
 							"item": [
 								{
-									"name": "ChangeModel",
+									"name": "/api/Session/:sessionId/llmmodel",
 									"request": {
 										"method": "PATCH",
 										"header": [
 											{
 												"key": "Content-Type",
 												"value": "application/json"
-											},
-											{
-												"key": "Authorization",
-												"value": "",
-												"type": "text"
 											}
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"model\": \"\"\n}",
+											"raw": "{\n  \"model\": \"string\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -513,7 +486,7 @@
 											"variable": [
 												{
 													"key": "sessionId",
-													"value": "",
+													"value": "urn:uuid:44de2be3-f622-5794-7a28-a9aa0da4c85d",
 													"description": "(Required) "
 												}
 											]

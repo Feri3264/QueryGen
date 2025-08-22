@@ -19,7 +19,8 @@ public class CompletePromptHandler(
         if (session.IsError)
             return session.Errors;
 
-        var prompt = promptBuilder.GeneratePrompt(request.prompt , session.Value.Metadata);
+
+        var prompt = promptBuilder.GeneratePrompt(request.prompt , session.Value.DbType , session.Value.Metadata);
 
         if (prompt.IsError)
             return prompt.Errors;
@@ -39,7 +40,7 @@ public class CompletePromptHandler(
         if (isQueryValid.IsError)
             return isQueryValid.Errors;
 
-        var result = await dbServices.ExecuteQuery(session.Value.ConnectionString , query.Value);
+        var result = await dbServices.ExecuteQuery(session.Value.ConnectionString , session.Value.DbType , query.Value);
 
         if (result.IsError)
             return result.Errors;

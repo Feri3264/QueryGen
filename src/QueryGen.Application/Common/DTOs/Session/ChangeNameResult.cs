@@ -1,4 +1,5 @@
 using System;
+using QueryGen.Domain.Common.Enums;
 
 namespace QueryGen.Application.Common.DTOs.Session;
 
@@ -13,6 +14,8 @@ public class ChangeNameResult
     public string ApiToken { get; set; }
 
     public string LlmModel { get; set; }
+
+    public DatabaseTypeEnum DbType { get; set; }
 
     public Guid UserId { get; set; }
 }

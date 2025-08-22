@@ -2,6 +2,7 @@ using ErrorOr;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using QueryGen.Domain.Common.Enums;
 using QueryGen.Application.LLM.CompletePrompt;
 using QueryGen.Application.LLM.QueryPreview;
 using QueryGen.Application.Session.Command.ChangeLlmModel;
@@ -51,6 +52,7 @@ namespace QueryGen.Api.Controllers
                     s.Metadata,
                     s.ApiToken,
                     s.LlmModel,
+                    s.DbType.ToString(),             
                     s.UserId
                 )).ToList();
             }
@@ -83,6 +85,7 @@ namespace QueryGen.Api.Controllers
                         session.Metadata,
                         session.ApiToken,
                         session.LlmModel,
+                        session.DbType.ToString(),
                         session.UserId
                     )
                 ),
@@ -100,15 +103,18 @@ namespace QueryGen.Api.Controllers
             if (!TryGetUserId(out Guid UserId))
                 return Unauthorized();
 
+            if (!Enum.TryParse<DatabaseTypeEnum>(request.DbType, true, out var dbType))
+                return BadRequest("Invalid database type.");
+
             var result = await mediator.Send(
                 new CreateSessionCommand(
                     request.SessionName,
                     UserId,
                     request.ApiToken,
                     request.LlmModel,
+                    dbType,
                     request.Server,
-                    request.DbName,
-                    request.useWinAuth,
+                    request.DbName,            
                     request.username,
                     request.password,
                     request.port
@@ -123,6 +129,7 @@ namespace QueryGen.Api.Controllers
                         session.Metadata,
                         session.ApiToken,
                         session.LlmModel,
+                        session.DbType.ToString(),
                         session.UserId
                     )
                 ),
@@ -169,6 +176,7 @@ namespace QueryGen.Api.Controllers
                         session.Metadata,
                         session.ApiToken,
                         session.LlmModel,
+                        session.DbType.ToString(),
                         session.UserId
                     )
                 ),
@@ -198,6 +206,7 @@ namespace QueryGen.Api.Controllers
                         session.Metadata,
                         session.ApiToken,
                         session.LlmModel,
+                        session.DbType.ToString(),
                         session.UserId
                     )
                 ),

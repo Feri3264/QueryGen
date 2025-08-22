@@ -2,6 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using ErrorOr;
 using QueryGen.Application.Common.DTOs.Session;
+using QueryGen.Domain.Common.Enums;
 using QueryGen.Domain.Session;
 using QueryGen.Domain.SessionHistory;
 
@@ -19,7 +20,8 @@ public static class SessionMapper
             Metadata = model.Metadata,
             UserId = model.UserId,
             ApiToken = model.ApiToken,
-            LlmModel = model.LlmModel
+            LlmModel = model.LlmModel,
+            DbType = model.DbType
         };
     }
 
@@ -32,7 +34,8 @@ public static class SessionMapper
             Metadata = model.Metadata,
             UserId = model.UserId,
             ApiToken = model.ApiToken,
-            LlmModel = model.LlmModel
+            LlmModel = model.LlmModel,
+            DbType = model.DbType
         };
     }
 
@@ -49,6 +52,7 @@ public static class SessionMapper
                 Metadata = s.Metadata,
                 ApiToken = s.ApiToken,
                 LlmModel = s.LlmModel,
+                DbType = s.DbType,
                 UserId = s.UserId
             }).ToList();
         }
@@ -65,7 +69,8 @@ public static class SessionMapper
             Metadata = model.Metadata,
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
-            UserId = model.UserId
+            UserId = model.UserId,
+            DbType = model.DbType
         };
     }
 
@@ -78,7 +83,8 @@ public static class SessionMapper
             Metadata = model.Metadata,
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
-            UserId = model.UserId
+            UserId = model.UserId,
+            DbType = model.DbType
         };
     }
 

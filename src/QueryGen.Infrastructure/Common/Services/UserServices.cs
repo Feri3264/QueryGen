@@ -64,7 +64,7 @@ public class UserServices(
         var newRefreshToken = authServices.GenerateRefreshTokenAsync();
 
         user.SetRefreshToken(newRefreshToken);
-        user.SetTokenExpireTime(DateTime.Now.AddDays(3));
+        user.SetTokenExpireTime(DateTime.Now.AddDays(7));
 
         userRepository.Update(user);
         await userRepository.SaveAsync();

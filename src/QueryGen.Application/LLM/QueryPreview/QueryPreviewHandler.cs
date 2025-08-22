@@ -1,6 +1,7 @@
 using System;
 using ErrorOr;
 using MediatR;
+using QueryGen.Domain.Common.Enums;
 using QueryGen.Application.Common.Services;
 using QueryGen.Application.Common.Utilities;
 
@@ -18,7 +19,7 @@ public class QueryPreviewHandler(
         if (session.IsError)
             return session.Errors;
 
-        var prompt = promptBuilder.GeneratePrompt(request.prompt, session.Value.Metadata);
+        var prompt = promptBuilder.GeneratePrompt(request.prompt , session.Value.DbType , session.Value.Metadata);
 
         if (prompt.IsError)
             return prompt.Errors;

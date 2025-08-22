@@ -6,5 +6,6 @@ public record ChangeNameResponseDto(
     string Metadata,
     string ApiToken,
     string LlmModel,
+    string DbType,
     Guid UserId
 );

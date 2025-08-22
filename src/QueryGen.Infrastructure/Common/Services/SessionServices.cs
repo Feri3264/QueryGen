@@ -2,6 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Text.Json.Nodes;
 using ErrorOr;
+using QueryGen.Domain.Common.Enums;
 using QueryGen.Application.Common.Repository;
 using QueryGen.Application.Common.Services;
 using QueryGen.Domain.Session;
@@ -51,10 +52,11 @@ public class SessionServices(
         return session;
     }
 
-    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken , string LlmModel)
+    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken , string LlmModel , DatabaseTypeEnum DbType)
     {
         if (!await userServices.IsUserExists(UserId))
             return UserError.UserNotFound;
+
 
         var session = SessionModel.Create(
             Name,
@@ -62,7 +64,8 @@ public class SessionServices(
             Metadata,
             UserId,
             ApiToken,
-            LlmModel
+            LlmModel,
+            DbType
         );
 
         if (session.IsError)

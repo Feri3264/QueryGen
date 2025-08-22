@@ -186,3 +186,5 @@ E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\QueryGen.Api.genruntim
 E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\ref\QueryGen.Api.dll
 E:\Programming\QueryGen\src\QueryGen.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 E:\Programming\QueryGen\src\QueryGen.Api\obj\Debug\net9.0\QueryGen.Api.sourcelink.json
+E:\Programming\QueryGen\src\QueryGen.Api\bin\Debug\net9.0\Npgsql.dll
+E:\Programming\QueryGen\src\QueryGen.Api\bin\Debug\net9.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
