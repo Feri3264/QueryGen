@@ -7,5 +7,6 @@ public record GetMySessionsResponseDto(
     string ApiToken,
     string LlmModel,
     string DbType,
+    string LlmType,
     Guid UserId
 );

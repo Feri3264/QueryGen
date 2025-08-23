@@ -9,7 +9,7 @@ namespace QueryGen.Application.LLM.QueryPreview;
 
 public class QueryPreviewHandler(
     ISessionServices sessionServices,
-    ILlmServices llmServices,
+    ILlmServiceFactory llmFactory,
     IPromptBuilder promptBuilder) : IRequestHandler<QueryPreviewCommand, ErrorOr<string>>
 {
     public async Task<ErrorOr<string>> Handle(QueryPreviewCommand request, CancellationToken cancellationToken)
@@ -24,7 +24,8 @@ public class QueryPreviewHandler(
         if (prompt.IsError)
             return prompt.Errors;
 
-        var llmResponse = await llmServices.GetCompletionAsync(prompt.Value, session.Value.ApiToken, session.Value.LlmModel);
+        var provider = llmFactory.GetProvider(session.Value.LlmType);
+        var llmResponse = await provider.GetCompletionAsync(prompt.Value , session.Value.ApiToken , session.Value.LlmModel);
 
         if (llmResponse.IsError)
             return llmResponse.Errors;

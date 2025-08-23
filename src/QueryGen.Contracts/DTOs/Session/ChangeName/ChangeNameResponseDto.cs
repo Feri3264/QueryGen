@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace QueryGen.Contracts.DTOs.Session.ChangeName;
 
 public record ChangeNameResponseDto(
@@ -7,5 +9,6 @@ public record ChangeNameResponseDto(
     string ApiToken,
     string LlmModel,
     string DbType,
+    string LlmType,
     Guid UserId
 );

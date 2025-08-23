@@ -14,7 +14,7 @@ public interface ISessionServices
 
     Task<ErrorOr<List<SessionModel>?>> GetUserSessions(Guid UserId);
 
-    Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata, string ApiToken, string LlmModel , DatabaseTypeEnum DbType);
+    Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata, string? ApiToken, string LlmModel, DatabaseTypeEnum DbType, LlmTypeEnum LlmType);
 
     Task<ErrorOr<SessionHistoryModel>> CreateHistoryAsync(Guid SessionId, string Prompt, string Query, string Result);
 

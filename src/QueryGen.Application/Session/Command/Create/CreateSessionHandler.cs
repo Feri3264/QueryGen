@@ -39,7 +39,8 @@ public class CreateSessionHandler
             metadata.Value,
             request.ApiToken,
             request.LlmModel,
-            request.DbType
+            request.DbType,
+            request.LlmType
         );
 
         if (session.IsError)

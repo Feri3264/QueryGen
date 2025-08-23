@@ -21,7 +21,8 @@ public static class SessionMapper
             UserId = model.UserId,
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
-            DbType = model.DbType
+            DbType = model.DbType,
+            LlmType = model.LlmType
         };
     }
 
@@ -35,7 +36,8 @@ public static class SessionMapper
             UserId = model.UserId,
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
-            DbType = model.DbType
+            DbType = model.DbType,
+            LlmType = model.LlmType
         };
     }
 
@@ -53,6 +55,7 @@ public static class SessionMapper
                 ApiToken = s.ApiToken,
                 LlmModel = s.LlmModel,
                 DbType = s.DbType,
+                LlmType = s.LlmType,
                 UserId = s.UserId
             }).ToList();
         }
@@ -70,7 +73,8 @@ public static class SessionMapper
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
             UserId = model.UserId,
-            DbType = model.DbType
+            DbType = model.DbType,
+            LlmType = model.LlmType
         };
     }
 
@@ -84,7 +88,8 @@ public static class SessionMapper
             ApiToken = model.ApiToken,
             LlmModel = model.LlmModel,
             UserId = model.UserId,
-            DbType = model.DbType
+            DbType = model.DbType,
+            LlmType = model.LlmType
         };
     }
 

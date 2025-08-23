@@ -14,11 +14,13 @@ public class SessionModel : BaseClass
 
     public string Metadata { get; private set; }
 
-    public string ApiToken { get; private set; }
+    public string? ApiToken { get; private set; }
 
     public string LlmModel { get; private set; }
 
     public DatabaseTypeEnum DbType { get; set; }
+
+    public LlmTypeEnum LlmType { get; set; }
 
 
     //navigation
@@ -31,9 +33,10 @@ public class SessionModel : BaseClass
         string _connectionString,
         string _metadata,
         Guid _userId,
-        string _apiToken,
+        string? _apiToken,
         string _llmModel,
-        DatabaseTypeEnum _dbType
+        DatabaseTypeEnum _dbType,
+        LlmTypeEnum _llmType
     )
     {
         Id = Guid.NewGuid();
@@ -44,6 +47,7 @@ public class SessionModel : BaseClass
         ApiToken = _apiToken;
         LlmModel = _llmModel;
         DbType = _dbType;
+        LlmType = _llmType;
     }
 
 
@@ -53,9 +57,10 @@ public class SessionModel : BaseClass
         string _connectionString,
         string _metadata,
         Guid _userId,
-        string _apiToken,
+        string? _apiToken,
         string _llmModel,
-        DatabaseTypeEnum _dbType
+        DatabaseTypeEnum _dbType,
+        LlmTypeEnum _llmType
     )
     {
         if (string.IsNullOrWhiteSpace(_name))
@@ -64,10 +69,7 @@ public class SessionModel : BaseClass
         if (string.IsNullOrWhiteSpace(_connectionString))
             return SessionError.ConnStirngIsNullOrEmpty;
 
-        if (string.IsNullOrWhiteSpace(_apiToken))
-            return SessionError.ApiTokenIsNullOrEmpty;
-
-        return new SessionModel(_name, _connectionString, _metadata, _userId, _apiToken, _llmModel , _dbType);
+        return new SessionModel(_name, _connectionString, _metadata, _userId, _apiToken, _llmModel , _dbType , _llmType);
     }
 
     public void SetName(string value)

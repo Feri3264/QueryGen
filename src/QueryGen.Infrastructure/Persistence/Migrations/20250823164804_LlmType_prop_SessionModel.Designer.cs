@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QueryGen.Infrastructure.Common.Context;
 
@@ -11,9 +12,11 @@ using QueryGen.Infrastructure.Common.Context;
 namespace QueryGen.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(QueryGenDbContext))]
-    partial class QueryGenDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250823164804_LlmType_prop_SessionModel")]
+    partial class LlmType_prop_SessionModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +31,7 @@ namespace QueryGen.Infrastructure.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ApiToken")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConnectionString")

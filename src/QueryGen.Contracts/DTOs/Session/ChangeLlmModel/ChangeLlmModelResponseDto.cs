@@ -7,5 +7,6 @@ public record ChangeLlmModelResponseDto(
     string ApiToken,
     string LlmModel,
     string DbType,
+    string LlmType,
     Guid UserId
 );

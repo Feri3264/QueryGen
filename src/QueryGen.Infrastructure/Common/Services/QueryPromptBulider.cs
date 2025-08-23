@@ -25,7 +25,7 @@ public class QueryPromptBulider : IPromptBuilder
         var metadataInstruction = $"Database Metadata (in JSON format):\n{Metadata}";
 
         // ساخت پرامپت نهایی
-        var finalPrompt = $"{systemInstructions}\n{databaseType}\n\n{metadataInstruction}\n\nUser Request:\n{Prompt}";
+        var finalPrompt = $"{systemInstructions}\n\n{databaseType}\n\n{metadataInstruction}\n\nUser Request:\n{Prompt}";
 
         return finalPrompt;
     }

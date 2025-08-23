@@ -4,8 +4,9 @@ public record CreateSessionResponseDto(
     string Name,
     string ConnectionString,
     string Metadata,
-    string ApiToken,
+    string? ApiToken,
     string LlmModel,
     string DbType,
+    string LlmType,
     Guid UserId
 );

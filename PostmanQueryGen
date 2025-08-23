@@ -74,7 +74,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 9813\n}",
+											"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"llmType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"str\",\n  \"port\": 314\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -106,7 +106,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"useWinAuth\": false,\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"port\": 9813\n}",
+													"raw": "{\n  \"sessionName\": \"string\",\n  \"apiToken\": \"string\",\n  \"llmModel\": \"string\",\n  \"dbType\": \"string\",\n  \"llmType\": \"string\",\n  \"server\": \"string\",\n  \"dbName\": \"string\",\n  \"username\": \"string\",\n  \"password\": \"str\",\n  \"port\": 314\n}",
 													"options": {
 														"raw": {
 															"headerFamily": "json",

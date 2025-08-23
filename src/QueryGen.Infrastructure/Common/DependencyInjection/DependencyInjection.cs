@@ -11,6 +11,8 @@ using QueryGen.Infrastructure.Common.Auth;
 using QueryGen.Infrastructure.Session;
 using QueryGen.Infrastructure.User;
 using QueryGen.Infrastructure.SessionHistory;
+using QueryGen.Infrastructure.Common.Utilities;
+using QueryGen.Application.Common.Utilities;
 
 namespace QueryGen.Infrastructure.Common.DependencyInjection;
 
@@ -32,6 +34,7 @@ public static class DependencyInjection
         services.AddScoped<IUserServices, UserServices>();
         services.AddScoped<ISessionServices, SessionServices>();
         services.AddScoped<ILlmServices, OpenRouterLlmServices>();
+        services.AddScoped<ILlmServices, OllamaLlmServices>();
         services.AddScoped<IDbServices, DbServices>();
         services.AddScoped<IPromptBuilder, QueryPromptBulider>();
 
@@ -43,6 +46,9 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<ISessionRepository, SessionRepository>();
         services.AddScoped<ISessionHistoryRepository, SessionHistoryRepository>();
+
+        //Utilities
+        services.AddScoped<ILlmServiceFactory , LlmServiceFactory>();
 
 
         return services;

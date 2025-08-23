@@ -52,7 +52,7 @@ public class SessionServices(
         return session;
     }
 
-    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string ApiToken , string LlmModel , DatabaseTypeEnum DbType)
+    public async Task<ErrorOr<SessionModel>> CreateAsync(string Name, Guid UserId, string ConnectionString, string Metadata , string? ApiToken , string LlmModel , DatabaseTypeEnum DbType , LlmTypeEnum LlmType)
     {
         if (!await userServices.IsUserExists(UserId))
             return UserError.UserNotFound;
@@ -65,7 +65,8 @@ public class SessionServices(
             UserId,
             ApiToken,
             LlmModel,
-            DbType
+            DbType,
+            LlmType
         );
 
         if (session.IsError)

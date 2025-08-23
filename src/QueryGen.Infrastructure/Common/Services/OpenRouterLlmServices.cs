@@ -4,13 +4,17 @@ using QueryGen.Application.Common.Services;
 using System.Text.Json;
 using System.Text;
 using ErrorOr;
+using QueryGen.Domain.Session;
 
 namespace QueryGen.Infrastructure.Common.Services;
 
 public class OpenRouterLlmServices : ILlmServices
 {
-    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt , string ApiToken , string LlmModel)
+    public async Task<ErrorOr<string>> GetCompletionAsync(string Prompt , string? ApiToken , string LlmModel)
     {
+        if (ApiToken is null)
+            return SessionError.ApiTokenIsNullOrEmpty;
+        
         var apiKey = ApiToken;
         var apiUrl = "https://openrouter.ai/api/v1/chat/completions";
 

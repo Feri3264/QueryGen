@@ -2,9 +2,10 @@ namespace QueryGen.Contracts.DTOs.Session.CreateSession;
 
 public record CreateSessionRequestDto(
     string SessionName,
-    string ApiToken,
+    string? ApiToken,
     string LlmModel,
     string DbType,
+    string LlmType,
     string Server,
     string DbName,
     string username = null,

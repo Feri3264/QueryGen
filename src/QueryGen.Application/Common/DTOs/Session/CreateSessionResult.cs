@@ -14,11 +14,13 @@ public class CreateSessionResult
 
     public string Metadata { get; set; }
 
-    public string ApiToken { get; set; }
+    public string? ApiToken { get; set; }
 
     public string LlmModel { get; set; }
 
     public DatabaseTypeEnum DbType { get; set; }
+
+    public LlmTypeEnum LlmType { get; set; }
 
     public Guid UserId { get; set; }
 }

@@ -8,7 +8,7 @@ namespace QueryGen.Application.LLM.CompletePrompt;
 
 public class CompletePromptHandler(
     ISessionServices sessionServices,
-    ILlmServices llmServices,
+    ILlmServiceFactory llmFactory,
     IDbServices dbServices,
     IPromptBuilder promptBuilder) : IRequestHandler<CompletePromptCommand, ErrorOr<string>>
 {
@@ -25,7 +25,8 @@ public class CompletePromptHandler(
         if (prompt.IsError)
             return prompt.Errors;
 
-        var llmResponse = await llmServices.GetCompletionAsync(prompt.Value , session.Value.ApiToken , session.Value.LlmModel);
+        var provider = llmFactory.GetProvider(session.Value.LlmType);
+        var llmResponse = await provider.GetCompletionAsync(prompt.Value , session.Value.ApiToken , session.Value.LlmModel);
 
         if (llmResponse.IsError)
             return llmResponse.Errors;

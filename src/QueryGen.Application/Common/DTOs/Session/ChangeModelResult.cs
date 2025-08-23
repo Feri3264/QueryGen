@@ -17,5 +17,7 @@ public class ChangeModelResult
 
     public DatabaseTypeEnum DbType { get; set; }
 
+    public LlmTypeEnum LlmType { get; set; }
+
     public Guid UserId { get; set; }
 }

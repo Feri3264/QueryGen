@@ -17,7 +17,7 @@ public class SessionConfig : IEntityTypeConfiguration<SessionModel>
         builder.Property(s => s.ConnectionString).IsRequired();
         builder.Property(s => s.Metadata).IsRequired();
         builder.Property(s => s.DbType).HasConversion<string>();
-
+        builder.Property(s => s.LlmType).HasConversion<string>();
 
 
         //navigation

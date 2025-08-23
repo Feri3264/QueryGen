@@ -9,11 +9,11 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 
 ## 2. Features
 - **LLM is isolated from the actual DB** → It only receives metadata.
-- **Supports SQL Server** → Connect using a custom connection string.
+- **Supports SQL Server And PostgreSQL** → Connect using a custom connection string.
 - **Session-based architecture** → Each database is managed in a separate session.
 - **JWT Authentication** → Secure endpoints with access and refresh tokens.
 - **Clean Architecture + CQRS** → Highly maintainable and testable.
-- **Switchable LLM Providers** → Currently using an external API but can switch to local models.
+- **Switchable LLM Providers** → using an external API like OpenRouter or can switch to local models.
 - **Regex-based Query Extraction & Validation** → Ensures query correctness.
 - **Preview Query** → Before executing on the actual database, QueryGen allows users to preview the generated SQL query, ensuring full control and safety.
 
@@ -24,7 +24,7 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 - **Database**: SQL Server
 - **Architecture**: Clean Architecture, CQRS
 - **Authentication**: JWT + Refresh Token
-- **LLM**: External API (future support for local models like Ollama)
+- **LLM**: OpenRouter, Ollama
 
 ---
 
@@ -34,7 +34,7 @@ The LLM only has access to **database metadata**, ensuring your data remains sec
 - [.NET 9 SDK](https://dotnet.microsoft.com/download)
 - SQL Server
 - A valid API key from [OpenRouter](https://openrouter.ai/docs/api-reference/authentication)
-- An OpenRouter [LLM Model](https://openrouter.ai/models)
+- An OpenRouter [LLM Model](https://openrouter.ai/models) or setup your own Ollama.
 - You can also import [PostmanQueryGen](PostmanQueryGen) file in your Postman.
 
 ### Steps
@@ -85,10 +85,11 @@ Authorization: Bearer {accessToken}
   "llmModel": "LLMModel",
   "server": "localhost",
   "dbName": "ShopDB",
-  "dbType": "sqlserver"
+  "dbType": "sqlserver",
+  "llmType": "ollama"
   "username": "sa",
   "password": "1234",
-  "port": 1433
+  "port": 5432
 }
 ```
 
@@ -121,7 +122,7 @@ Authorization: Bearer {accessToken}
 | **GET** | `/api/session/{sessionId}` | Get session details | - |
 | **GET** | `/api/session/{sessionId}/history/{historyId}` | Get a conversation history details | - |
 | **GET** | `/api/session/{sessionId}/history` | Get conversations history for a session | - |
-| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "dbType": "...", "username": "...", "password": "...", "port": number }` |
+| **POST** | `/api/session` | Create a new session | `{ "sessionName": "...", "apiToken": "...","llmModel": "...", "server": "...", "dbName": "...", "dbType": "...", "llmType": "...", "username": "...", "password": "...", "port": number }` |
 | **PATCH** | `/api/session/{sessionId}/name` | Change Session Name | `{ "name": "..." }` |
 | **PATCH** | `/api/session/{sessionId}/llmmodel` | Change Session LLM Model | `{ "model": "..." }` |
 | **DELETE** | `/api/session/{sessionId}` | Delete a session | - |
@@ -130,11 +131,47 @@ Authorization: Bearer {accessToken}
 
 ---
 
+## 8. Running with Ollama (Local LLM)
+You can use [Ollama](https://ollama.com) to run QueryGen completely locally without relying on external APIs
+### Step 1: Install Ollama
+Download and install Ollama from the official website:
+https://ollama.com/download
+
+### Step 2: Pull a Model
+Ollama provides multiple open-source models. For example, to pull Gemma:
+```bash
+ollama pull gemma2:2b
+```
+### Step 3: Run the Model
+Start serving the model locally:
+```bash
+ollama run gemma2:2b
+```
+By default, Ollama exposes a REST API at:
+```bash
+http://localhost:11434/api/generate
+```
+### Step 4: Use It
+Now you can run the API, create a session with your database connection, choose your database and llm type, and send prompts.
+QueryGen will use Ollama locally to generate SQL queries based on your input.
+
+#### ⚠️ Important Note
+
+Although you can run any model with Ollama, small models (e.g., 1B, 1.5B) are not recommended.
+
+They often fail to return a complete SQL query or valid JSON.
+
+This may cause exceptions in QueryGen.
+
+For best results, use models with ≥7B parameters (e.g., mistral:7b, gemma2:7b, etc.).
+
+---
+
 ## 7. Future Plans
 - Add a Web UI
 - Save prompt & response history (Done)
-- Support multiple LLMs with selectable options per session
-- Support more databases (PostgreSQL, MySQL, etc.)
+- Support multiple LLMs with selectable options per session (Done)
+- Support more databases (PostgreSQL, etc.) (Done)
 
 ---
 
